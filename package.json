@@ -1,0 +1,34 @@
+{
+  "name": "eclothes",
+  "version": "1.0.0",
+  "description": "Tienda de Ropa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloT8/eclothes.git"
+  },
+  "keywords": [
+    "node",
+    "handlebars",
+    "mongoose",
+    "bootstrap"
+  ],
+  "author": "KevinZamora PabloTavarez LuisEscobar JoseLeiva ErnestoCarcamo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PabloT8/eclothes/issues"
+  },
+  "homepage": "https://github.com/PabloT8/eclothes#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "mongoose": "^5.10.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
