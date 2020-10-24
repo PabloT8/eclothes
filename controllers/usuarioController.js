@@ -30,3 +30,8 @@ exports.crearCuenta = async (req, res, next) => {
     console.log(error);
   }
 };
+
+// Cargar el formulario de inicio de sesion
+exports.formularioIniciarSesion = (req, res, next) => {
+  res.render("iniciarSesion", { layout: "auth"});
+}
