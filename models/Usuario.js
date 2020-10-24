@@ -57,7 +57,7 @@ usuarioSchema.pre("save", function (next) {
   });
 });
 // Hooks activar el usuario y almacenar la fecha de registro
-usuarioSchema.post("save", function (err, doc, next) {
+usuarioSchema.pre("save", function (err, doc, next) {
   // TODO: Revisar la inserción para el hook
   const user = this;
 
@@ -70,5 +70,22 @@ usuarioSchema.post("save", function (err, doc, next) {
 
   next();
 });
+
+// Realizar un metodo que automaticamente verifique si el password candidato ingreado por el usuario es igual al almacenado
+usuarioSchema.method.comparePassword =  function(candidatePassword){
+  const user = this;
+  
+  return new Promise((resolve, reject) =>{
+    bcrypt.compare(candidatePassword, user.password, (err, isMatch) => {
+      // Promesa incumplida
+      if(err) return reject(err);
+
+      // Promesa cumplida
+      if(!isMatch) return reject(err);
+
+      resolve(true);
+    })
+  }).catch(console.log("Error al momento de comparar los passwords"));
+}
 
 module.exports = mongoose.model("Usuarios", usuarioSchema);
