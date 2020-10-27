@@ -57,7 +57,7 @@ usuarioSchema.pre("save", function (next) {
   });
 });
 // Hooks activar el usuario y almacenar la fecha de registro
-usuarioSchema.pre("save", function (err, doc, next) {
+usuarioSchema.post("save", function (err, doc, next) {
   // TODO: Revisar la inserción para el hook
   const user = this;
 
