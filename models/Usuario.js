@@ -72,7 +72,7 @@ usuarioSchema.post("save", function (err, doc, next) {
 });
 
 // Realizar un metodo que automaticamente verifique si el password candidato ingreado por el usuario es igual al almacenado
-usuarioSchema.method.comparePassword =  function(candidatePassword){
+usuarioSchema.methods.comparePassword =  function(candidatePassword){
   const user = this;
   
   return new Promise((resolve, reject) =>{

@@ -1,6 +1,7 @@
 // Importar los módulos requeridos
 const express = require("express");
 const usuarioController = require("../controllers/usuarioController");
+const authController = require("../controllers/authController");
 
 // Configura y mantiene todos los endpoints en el servidor
 const router = express.Router();
@@ -18,5 +19,7 @@ module.exports = () => {
 
   router.get("/iniciar-sesion", usuarioController.formularioIniciarSesion);
 
+  router.post("/iniciar-sesion", authController.autenticarUsuario);
+
   return router;
-}
+};

@@ -5,6 +5,7 @@ const exphbs = require("express-handlebars");
 const router = require("./routes/index");
 const bodyParser = require("body-parser");
 const path = require("path");
+const passport = require("./config/passport");
 
 // Habilitar el archivo de variables de entorno
 require("dotenv").config({ path: ".env" });
@@ -20,6 +21,10 @@ app.set("view engine", "hbs");
 // Definir ruta para archivos estaticos
 app.use(express.static(path.join(__dirname, "public")));
 
+//Habilitar passport y la estrategia local
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Habilitar body-parser para obtener el cuerpo de la petición
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -27,5 +32,3 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", router());
 
 app.listen(process.env.PORT);
-
-//Hola
