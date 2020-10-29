@@ -58,7 +58,7 @@ usuarioSchema.pre("save", function (next) {
 });
 // Hooks activar el usuario y almacenar la fecha de registro
 usuarioSchema.post("save", function (err, doc, next) {
-  // TODO: Revisar la inserción para el hook
+
   const user = this;
 
   if (err) return next(err);
@@ -69,6 +69,18 @@ usuarioSchema.post("save", function (err, doc, next) {
   }
 
   next();
+});
+
+// Hooks para acceder a los errores de MongoDB (unique key)
+usuarioSchema.post("save", function (err, doc, next) {
+  // Verificar si ocurrió un error al momento de almacenar
+  if (err.name === "MongoError" && err.code === 11000) {
+    next(
+      "¡Ya existe un usuario con la dirección de correo electrónico ingresada!"
+    );
+  } else {
+    next(err);
+  }
 });
 
 // Realizar un metodo que automaticamente verifique si el password candidato ingreado por el usuario es igual al almacenado
@@ -87,5 +99,7 @@ usuarioSchema.methods.comparePassword =  function(candidatePassword){
     })
   }).catch(console.log("Error al momento de comparar los passwords"));
 }
+
+
 
 module.exports = mongoose.model("Usuarios", usuarioSchema);
