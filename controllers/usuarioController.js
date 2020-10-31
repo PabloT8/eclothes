@@ -15,7 +15,7 @@ exports.crearCuenta = async (req, res, next) => {
   const errores = validationResult(req);
   const erroresArray = [];
 
-  console.log(erroresArray);
+  console.log(errores);
   //Si hay errores
   if (!errores.isEmpty){
     //Utilizar funcion map para navegar dentro de un arreglo
@@ -27,7 +27,7 @@ exports.crearCuenta = async (req, res, next) => {
       messages: req.flash()
     })
   }
-    
+  /*  
   // Obtener las variables desde el cuerpo de la petición
   const { nombre, email, password } = req.body;
 
@@ -45,7 +45,7 @@ exports.crearCuenta = async (req, res, next) => {
     // Mostrar un mensaje
   } catch (error) {
     console.log(error);
-  }
+  }*/
 };
 
 // Cargar el formulario de inicio de sesion
