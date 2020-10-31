@@ -15,20 +15,19 @@ exports.crearCuenta = async (req, res, next) => {
   const errores = validationResult(req);
   const erroresArray = [];
 
-  console.log(errores);
+  //console.log(errores);
   //Si hay errores
   if (!errores.isEmpty){
     //Utilizar funcion map para navegar dentro de un arreglo
-    errores.array().map(error => erroresArray.push(error.msg));
+    errores.array().map(error => messages.push({ message: error.msg, alertType: "danger" }));
     //Agregar errores a mensajes flash
     req.flash("error", erroresArray);
     res.render("registrarse", {
       layout: "auth", 
-      messages: req.flash()
-    })
-  }
-  /*  
-  // Obtener las variables desde el cuerpo de la petición
+      messages: errores,
+    });
+  } else{
+    // Obtener las variables desde el cuerpo de la petición
   const { nombre, email, password } = req.body;
 
   // Intentar almacenar los datos del usuario
@@ -43,12 +42,21 @@ exports.crearCuenta = async (req, res, next) => {
     });
 
     // Mostrar un mensaje
+    const mensaje = [];
+    mensaje.push({ message: "Usuario creado satisfactoriamente", alertType: "success"});
+    req.flash("error", mensaje);
+    res.redirect("/iniciar-sesion");
   } catch (error) {
     console.log(error);
-  }*/
+  }
+  }
+
 };
 
 // Cargar el formulario de inicio de sesion
 exports.formularioIniciarSesion = (req, res, next) => {
-  res.render("iniciarSesion", { layout: "auth"});
+  res.render("iniciarSesion", { 
+    layout: "auth",
+    messages: req.flash(),
+});
 }
