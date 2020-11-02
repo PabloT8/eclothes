@@ -5,18 +5,18 @@
 
 {{!-- Formulario de registro --}}
 
-<div class="container text-center d-flex justify-content-center">
+<div class="container-sm">
   {{!-- Mensajes para el usuario --}}
-  {{>messages}}
+  {{>messages messages}}
     <form method="post" action="/registrarse" class="form form-signin align-middle">
       <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> {{!-- cambiar URL del logo en src --}}
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="nombre" class="sr-only">Nombre Completo</label>
-      <input type="text" id="inputNombre" name="nombre" class="form-control" placeholder="Nombre Completo"  autofocus="">
+      <input type="text" id="inputNombre" name="nombre" class="form-control" placeholder="Nombre Completo"  value={{nombre}}>
       <label for="email" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" >
+      <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" value={{email}}>
       <label for="password" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" >
+      <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" value={{password}}>
       <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me"> Remember me
