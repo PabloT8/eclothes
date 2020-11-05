@@ -23,23 +23,23 @@ app.engine("hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
 
 app.set("view engine", "hbs");
 
-// Definir ruta para archivos estaticos
+// Definir ruta para archivos estáticos.
 app.use(express.static(path.join(__dirname, "public")));
 
 // Crear la sesión de usuario y la cookie encargada de almacenarla
 app.use(cookieParser());
 
 app.use(
-    session({
-        secret: process.env.SECRET,
-        key: process.env.KEY,
-        resave: false,
-        saveUninitialized: false,
-        store: new MongoStore({ mongooseConnection: mongoose.connection }),
-      })
+  session({
+    secret: process.env.SECRET,
+    key: process.env.KEY,
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  })
 );
 
-//Habilitar passport y la estrategia local
+// Habilitar passport y la estrategia local
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -48,9 +48,9 @@ app.use(flash());
 
 // Midleware personalizado para agregar mensajes flash
 app.use((req, res, next) => {
-    res.locals.messages = req.flash();
-    next();
-  });
+  res.locals.messages = req.flash();
+  next();
+});
 
 // Habilitar body-parser para obtener el cuerpo de la petición
 app.use(bodyParser.urlencoded({ extended: true }));
