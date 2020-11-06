@@ -13,22 +13,23 @@ passport.use(
             passwordField: "password"
         },
         async (email, password, done) => {
+            
             //Verificar si el usuario existe en la BD
             const usuario = await Usuario.findOne({ email });
 
             //Si el usuario no existe 
             if (!usuario) {
                 return done(null, false, {
-                    message: ["El correo electronico no se encuentra registrado!"]
+                    messages: [{ message: "El correo electronico no se encuentra registrado!", alertType: "danger"}],
                 });
             }
             //Si el usuario existe, verificar si la contrasena es correcta
-            const verificarPassword = usuario.comparePassword(password);
+            const verificarPassword = await usuario.comparePassword(password);
 
             //Si la contraseña es incorrecta
             if(!verificarPassword){
                 return done(null, false, {
-                    message: ["la contraseña ingresada es incorrecta"],
+                    messages: [{ message:"la contraseña ingresada es incorrecta", alertType: "danger"}],
                 }); 
             }
 
