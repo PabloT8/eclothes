@@ -1,6 +1,6 @@
 //Importar modulos requeridos
 const mongoose = require("mongoose");
-const shortid = require(shortid);
+const shortid = require("shortid");
 //Definicion del schema
 const productoSchema = new mongoose.Schema({
     nombre: {
