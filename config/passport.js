@@ -10,27 +10,41 @@ passport.use(
     new LocalStrategy({
         
             usernameField: "email",
-            passwordField: "password"
+            passwordField: "password",
+            passReqToCallback: true,
         },
-        async (email, password, done) => {
+        async (req, email, password, done) => {
             
             //Verificar si el usuario existe en la BD
             const usuario = await Usuario.findOne({ email });
 
             //Si el usuario no existe 
             if (!usuario) {
-                return done(null, false, {
-                    messages: [{ message: "El correo electronico no se encuentra registrado!", alertType: "danger"}],
-                });
+                return done(
+                    null,
+                    false,
+                    req.flash("messages", [
+                        {
+                          message: "¡El correo electrónico no se encuentra registrado!",
+                          alertType: "danger",
+                        },
+                      ])
+                    );
             }
             //Si el usuario existe, verificar si la contrasena es correcta
             const verificarPassword = await usuario.comparePassword(password);
 
+      console.log(verificarPassword);
+
             //Si la contraseña es incorrecta
             if(!verificarPassword){
-                return done(null, false, {
-                    messages: [{ message:"la contraseña ingresada es incorrecta", alertType: "danger"}],
-                }); 
+                return done(null, false, req.flash("messages", [
+                    {
+                      message: "¡La contraseña ingresada es incorrecta!",
+                      alertType: "danger",
+                    },
+                  ])
+                );
             }
 
             //El usuario existe y la contrasena enviada es correcta

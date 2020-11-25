@@ -50,15 +50,20 @@ exports.crearCuenta = async (req, res, next) => {
       });
 
       // Mostrar un mensaje
-      messages.messages.push({
+      messages.push({
         message: "!Usuario creado satisfactoriamente!",
         alertType: "success",
       });
-      req.flash("error", messages);
+      req.flash("messages", messages);
 
       res.redirect("/iniciar-sesion");
     } catch (error) {
-      console.log(error);
+      messages.push({
+        message: error,
+        alertType: "danger",
+      });
+      req.flash("messages", messages);
+      res.redirect("/crear-cuenta");
     }
   }
 };
