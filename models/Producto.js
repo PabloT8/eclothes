@@ -38,7 +38,7 @@ const productoSchema = new mongoose.Schema({
 productoSchema.pre("save", function(next){
     //Crear URL
     const url = slug(this.nombre);
-    this.url = '${url}-${shortid.geenerate()}';
+    this.url = `${url}-${shortid.generate()}`;
     next();
 })
 //Generar un indice para mejorar la busqueda por el nombre del producto
