@@ -58,7 +58,7 @@ module.exports = () => {
   check("nombre", "Debes ingresar el nombre del producto").not().isEmpty().escape(),
   check("descripcion", "Debes ingresar una descripción de producto").not().isEmpty().escape(),
   check("precio", "Debes ingresar el precio del producto").not().isEmpty().escape(),
-  check("estado", "Selecciona el estado del producto").not().isEmpty().escape(),
+  //check("estado", "Selecciona el estado del producto").not().isEmpty().escape(),
   check("precio",  "Valor incorrecto del precio").isNumeric().not(),
  ],
  productoController.crearProducto
