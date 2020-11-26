@@ -48,7 +48,10 @@ module.exports = () => {
   res.send("Administración del sitio");
 
  });
-
+ //Ruta para productos
+ router.get("/crear-producto", authController.verificarInicioSesion, (req, res, next) =>{
+  res.render("crearProducto");
+ });
 
   return router;
 };
