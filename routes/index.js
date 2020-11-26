@@ -51,6 +51,9 @@ module.exports = () => {
  });
  //Ruta para productos
  router.get("/crear-producto", authController.verificarInicioSesion, 
+ productoController.formularioCrearProducto);
+
+ router.post("/crear=producto", authController.verificarInicioSesion, 
  [
   check("nombre", "Debes ingresar el nombre del producto").not().isEmpty().escape(),
   check("descripcion", "Debes ingresar una descripción de producto").not().isEmpty().escape(),
@@ -58,7 +61,8 @@ module.exports = () => {
   check("estado", "Selecciona el estado del producto").not().isEmpty().escape(),
   check("precio",  "Valor incorrecto del precio").isNumeric().not(),
  ],
- productoController.formularioCrearProducto);
+ productoController.crearProducto
+ );
 
   return router;
 };
