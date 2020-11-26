@@ -1,29 +1,42 @@
-{{!-- Barra de navegación --}}
-<nav class="navbar">
+<div class="page-header">
+  <h1>.</h1>
+  <div class="register">
 
-</nav>
+    {{!-- Formulario de registro --}}
 
-{{!-- Formulario de registro --}}
 
-<div class="container-sm">
-  {{!-- Mensajes para el usuario --}}
-  {{>messages messages}}
-    <form method="post" action="/registrarse" class="form form-signin align-middle">
-      <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> {{!-- cambiar URL del logo en src --}}
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="nombre" class="sr-only">Nombre Completo</label>
-      <input type="text" id="inputNombre" name="nombre" class="form-control" placeholder="Nombre Completo"  value={{nombre}}>
-      <label for="email" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" value={{email}}>
-      <label for="password" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" value={{password}}>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
+    {{!-- Mensajes para el usuario --}}
+
+
+    <div class="form-registrarse">
+
+
+      <div class="loging-container">
+
+        {{>messages messages}}
+
+        <form method="post" action="/registrarse" class="form-register">
+          <h4>REGÍSTRATE</h4>
+          <input class="controls" type="text" id="inputNombre" name="nombre" placeholder="Nombre Completo"
+            value={{nombre}}>
+          <input class="controls" type="email" id="inputEmail" name="email" placeholder="Email address" value={{email}}>
+          <input class="controls" type="password" id="inputPassword" name="password" placeholder="Password"
+            value={{password}}>
+          <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
+
+          <button class="botons" type="submit">Registrar</button>
+          <p><a href="/iniciar-sesion">¿Ya tengo Cuenta?</a></p>
+
+
+          <p class="mt-5 mb-3 text-muted">E-clothes© 2020</p>
+        </form>
+
+
       </div>
-      <button class=" btn btn-lg btn-primary btn-block " type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">E-clothes© 2020</p>
-    </form>
+
+
+    </div>
+
+  </div>
 </div>
 

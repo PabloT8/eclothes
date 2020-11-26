@@ -1,10 +1,15 @@
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="main">
   <div class="section">
     <div class="container">
       <h3>Agrega tu producto</h3>
       <div>
         {{!-- Mensajes para el usuario --}}
-        {{> showMessages messages}}
+        {{> messages messages}}
         <form action="/crear-producto" method="POST" enctype="multipart/form-data">
           <div class="row">
             <div class="col-md-5 col-sm-5">

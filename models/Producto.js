@@ -42,6 +42,10 @@ productoSchema.pre("save", function(next){
     //Crear URL
     const url = slug(this.nombre);
     this.url = `${url}-${shortid.generate()}`;
+
+    // Almacenar la fecha de creación del producto
+  this.fechaCreacion = Date.now();
+
     next();
 })
 //Generar un indice para mejorar la busqueda por el nombre del producto

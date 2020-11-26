@@ -17,9 +17,15 @@ exports.autenticarUsuario = passport.authenticate("local", {
 // Cerrar la sesión del usuario
 exports.cerrarSesion = (req, res, next) => {
   const messages = [];
+
   // Cierra la sesión
   req.logout();
-  messages.push({message: "Has cerrado correctamente tu sesión. ¡Vuelve pronto!", alertType: "succes"})
+
+  messages.push({
+    message: "Has cerrado correctamente tu sesión. ¡Vuelve pronto!",
+    alertType: "success",
+  });
+
   req.flash("messages", messages);
 
   return res.redirect("/iniciar-sesion");
@@ -205,9 +211,11 @@ exports.almacenarNuevaPassword = async (req, res, next) => {
   }
 };
 
-//Verifica que el usuario este autenticado
-exports.verificarInicioSesion = (req, res, next) =>{
+// Verifica que el usuario se encuentre autenticado
+exports.verificarInicioSesion = (req, res, next) => {
+  // Si el usuario se encuentra autenticado que siga con el siguiente middleware
   if (req.isAuthenticated()) return next();
-  //Si no se atenticó debe redireccionar a inicio de sesión
+
+  // Si no se auntenticó, redireccionar al inicio de sesión
   res.redirect("/iniciar-sesion");
-}
+};

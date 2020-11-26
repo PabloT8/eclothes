@@ -1,7 +1,7 @@
 {
-  "name": "eclothes",
+  "name": "nowelectronics",
   "version": "1.0.0",
-  "description": "Tienda de Ropa",
+  "description": "Tienda en linea de productos electronicos",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,20 +9,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PabloT8/eclothes.git"
+    "url": "git+https://github.com/wilhenc36/Now-Electronics.git"
   },
   "keywords": [
     "node",
     "handlebars",
     "mongoose",
-    "bootstrap"
+    "bootstrap",
+    "MVC"
   ],
-  "author": "KevinZamora PabloTavarez LuisEscobar JoseLeiva ErnestoCarcamo",
+  "author": "José Escoto, Wilhen Cruz, Jassiel Aldana, Hertdert Ortega, David Torres",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PabloT8/eclothes/issues"
+    "url": "https://github.com/wilhenc36/Now-Electronics/issues"
   },
-  "homepage": "https://github.com/PabloT8/eclothes#readme",
+  "homepage": "https://github.com/wilhenc36/Now-Electronics#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",

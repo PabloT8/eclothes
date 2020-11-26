@@ -11,7 +11,7 @@ const router = express.Router();
 module.exports = () => {
   // Rutas disponibles
   router.get("/", (req, res, next) => {
-    res.send("¡Bienvenido a Cashize!");
+    res.render("buscar");
   });
 
   // Rutas para usuario
@@ -35,14 +35,19 @@ module.exports = () => {
     .isEmpty()],
     usuarioController.crearCuenta
    );
+   
+   router.get("/iniciar-sesion", usuarioController.formularioIniciarSesion);
 
-  router.get("/iniciar-sesion", usuarioController.formularioIniciarSesion);
+   router.post("/iniciar-sesion", authController.autenticarUsuario);
+ 
+   router.get("/olvide-password", authController.formularioRestablecerPassword);
+ 
+   router.post("/olvide-password", authController.enviarToken);
+ 
+   router.get("/olvide-password/:token", authController.formularioNuevoPassword);
+ 
+   router.post("/olvide-password/:token", authController.almacenarNuevaPassword);
 
-  router.post("/iniciar-sesion", authController.autenticarUsuario);
-
-  router.get("/olvide-password", authController.formularioRestablecerPassword);
-
-  router.post("/olvide-password", authController.enviarToken);
 
   // Rutas de administración
  router.get("/administrar", (req, res, next )=>{
@@ -53,16 +58,32 @@ module.exports = () => {
  router.get("/crear-producto", authController.verificarInicioSesion, 
  productoController.formularioCrearProducto);
 
- router.post("/crear=producto", authController.verificarInicioSesion, 
- [
-  check("nombre", "Debes ingresar el nombre del producto").not().isEmpty().escape(),
-  check("descripcion", "Debes ingresar una descripción de producto").not().isEmpty().escape(),
-  check("precio", "Debes ingresar el precio del producto").not().isEmpty().escape(),
-  //check("estado", "Selecciona el estado del producto").not().isEmpty().escape(),
-  check("precio",  "Valor incorrecto del precio").isNumeric().not(),
- ],
- productoController.crearProducto
- );
+ router.post(
+  "/crear-producto",
+  authController.verificarInicioSesion,
+  // [
+  //   check("imagen", "Debes seleccionar una imagen para el producto")
+  //     .not()
+  //     .isEmpty(),
+  // ],
+  productoController.subirImagen,
+  [
+    check("nombre", "Debes ingresar el nombre del producto")
+      .not()
+      .isEmpty()
+      .escape(),
+    check("descripcion", "Debes ingresar la descripción del producto")
+      .not()
+      .isEmpty()
+      .escape(),
+    check("precio", "Debes ingresar el precio del producto")
+      .not()
+      .isEmpty()
+      .escape(),
+    check("precio", "Valor incorrecto en el precio del producto").isNumeric(),
+  ],
+  productoController.crearProducto
+);
 
   return router;
 };
