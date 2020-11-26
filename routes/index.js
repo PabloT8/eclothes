@@ -2,6 +2,7 @@
 const express = require("express");
 const usuarioController = require("../controllers/usuarioController");
 const authController = require("../controllers/authController");
+const productoController = require("../controllers/productoController")
 const { check } = require("express-validator");
 
 // Configura y mantiene todos los endpoints en el servidor
@@ -49,9 +50,8 @@ module.exports = () => {
 
  });
  //Ruta para productos
- router.get("/crear-producto", authController.verificarInicioSesion, (req, res, next) =>{
-  res.render("crearProducto");
- });
+ router.get("/crear-producto", authController.verificarInicioSesion, 
+ productoController.formularioCrearProducto);
 
   return router;
 };
