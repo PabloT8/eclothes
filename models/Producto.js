@@ -34,6 +34,7 @@ const productoSchema = new mongoose.Schema({
         ref: "Usuario",
     },
     fechaVenta: Date,
+    estado: String,
 })
 //Hooks para generar URL del producto
 productoSchema.pre("save", function(next){
