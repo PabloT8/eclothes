@@ -13,6 +13,7 @@ const productoSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    imagen: String,
     precio: {
         type: Number,
         required: true,
@@ -22,7 +23,7 @@ const productoSchema = new mongoose.Schema({
         type: String,
         lowercase: true,
     },
-    etiquetas: [String],
+    etiquetas: String,
     vendedor: {
         type: mongoose.Schema.ObjectId,
         ref: "Usuario",
