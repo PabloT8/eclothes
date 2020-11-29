@@ -9,20 +9,20 @@
       <h3>Agrega tu producto</h3>
       <div>
         {{!-- Mensajes para el usuario --}}
-        {{> messages messages}}
+        {{> showMessages messages}}
         <form action="/crear-producto" method="POST" enctype="multipart/form-data">
           <div class="row">
             <div class="col-md-5 col-sm-5">
               <h6>Imagen del producto</h6>
               <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                 <div class="fileinput-new thumbnail img-no-padding" style="max-width: 370px; max-height: 250px;">
-                  <img src="/img/cashizelogo.png" alt="...">
+                  <img src="/img/logoded.png" alt="..." style="max-width: 370px; max-height: 250px;">
                 </div>
                 <div class="fileinput-preview fileinput-exists thumbnail img-no-padding"
                   style="max-width: 370px; max-height: 250px;"></div>
                 <div>
                   <span class="btn btn-outline-default btn-round btn-file"><span class="fileinput-new">Selecciona una
-                      imagen</span><span class="fileinput-exists">Cambiar</span><input type="file" name="imagen"></span>
+                      imagen</span><span class="fileinput-exists">Cambiar</span><input type="file" name="imagen" id="imagen"></span>
                   <a href="#paper-kit" class="btn btn-link btn-danger fileinput-exists" data-dismiss="fileinput"><i
                       class="fa fa-times"></i> Quitar</a>
                 </div>
@@ -37,15 +37,14 @@
               <h6>Estado <span class="icon-danger">*</span></h6>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="estadoNuevo" id="estadoNuevo" value="nuevo">
+                  <input class="form-check-input" type="radio" name="estado" id="estadoNuevo" value="nuevo" >
                   Nuevo
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="estadoUsado" id="estadoUsado" value="usado"
-                    checked>
+                  <input class="form-check-input" type="radio" name="estado" id="estadoUsado" value="usado">
                   Usado
                   <span class="form-check-sign"></span>
                 </label>

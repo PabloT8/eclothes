@@ -76,6 +76,5 @@ exports.formularioIniciarSesion = (req, res, next) => {
     signButtonValue: "/crear-cuenta",
     signButtonText: "Regístrate",
     year,
-    messages: req.flash(),
   });
 };
