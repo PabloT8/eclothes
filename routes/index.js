@@ -85,14 +85,13 @@ module.exports = () => {
     productoController.crearProducto
   );
 
-
   router.get("/producto/:url", productoController.verProducto);
-/*
+
   router.get(
     "/carrito/:url",
     authController.verificarInicioSesion,
     productoController.agregarProductoCarrito
   );
-*/
+
   return router;
 };
