@@ -1,26 +1,24 @@
-//Importar los modulos requeridos
-const mongoose = require("mongoose");
+module.exports = function Carrito(viejoCarrito) {
+    this.items = viejoCarrito.items || {};
+    this.cantidadTotal = viejoCarrito.cantidadTotal || 0;
+    this.precioTotal = viejoCarrito.precioTotal || 0;
 
-//Definicion del schema
-const carritoSchema = new mongoose.Schema({
-    producto: [
-        {
-            type: mongoose.Schema.ObjectId,
-            ref: "Producto",
-            required: true
+    this.add = function(item, id){
+        var itemAlmacenado = this.items[id];
+        if (!itemAlmacenado) {
+            itemAlmacenado = this.items[id] = {item: item, qty: 0, precio: 0};
         }
-    ],
-    usuario: {
-        type: mongoose.Schema.ObjectId,
-        ref: "Usuarios",
-        required: true,
-        unique: true,
-    },
-    fecha: Date,
-    total: {
-        type: Number,
-        required: true,
-    },
-});
+        itemAlmacenado.qty++;
+        itemAlmacenado.precio = itemAlmacenado.item.precio * itemAlmacenado.qty;
+        this.cantidadTotal++;
+        this.precioTotal += itemAlmacenado.precio;
+    };
 
-module.exports = mongoose.model("Carrito", carritoSchema);
+    this.generarArray = function() {
+        var arr = [];
+        for (var id in this.items){
+            arr.push(this.items[id]);
+        }
+        return arr;
+    };
+};

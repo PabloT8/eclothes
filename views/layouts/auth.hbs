@@ -20,12 +20,13 @@
 
 <body class="{{typePage}} full-screen sidebar-collapse">
   {{!-- Navbar --}}
-  <nav class="navbar navbar-expand-lg bg-white fixed-top nav-down navbar-transparent" color-on-scroll="500">
+  <nav class="navbar navbar-expand-lg fixed-top bg-warning nav-down" color-on-scroll="500">
     <div class="container">
       <div class="navbar-translate">
+
         <a class="navbar-brand" href="/" rel="tooltip" title="E-clothes" data-placement="bottom" style="color: white;">
-        <img src="/img/logo.png" width="100" height="100" class="d-inline-block align-top" alt="" >
-          
+          <img src="/img/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
+          e-clothes
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
@@ -37,28 +38,34 @@
       </div>
       <div class="collapse navbar-collapse" data-nav-image="../assets/img/blurred-image-1.jpg" data-color="orange">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="btn btn-round btn-danger" href="{{signButtonValue}}">
-              {{signButtonText}}
-            </a>
+          <li class="dropdown nav-item">
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
+              Administración </a>
+            <div class="dropdown-menu">
+              <a href="/crear-producto" class="dropdown-item">
+                Crear producto
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="/" class="dropdown-item">
+                Ver productos
+              </a>
+            </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Síguenos en Twitter" data-placement="bottom"
-              href="https://twitter.com/" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Danos like en Facebook" data-placement="bottom"
-              href="https://www.facebook.com/" target="_blank">
-              <i class="fab fa-facebook-square"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Síguenos en Instagram" data-placement="bottom"
-              href="https://www.instagram.com/" target="_blank">
-              <i class="fab fa-instagram"></i>
-            </a>
+          {{!-- Iniciar o cerrar sesión --}}
+          <li class="dropdown nav-item">
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
+              Cuenta </a>
+            <div class="dropdown-menu">
+              {{#if login}} 
+                <a href="/perfil" class="dropdown-item"> Tu perfil</a>
+                <div class="dropdown-divider"></div>
+                <a href="/cerrar-sesion" class="dropdown-item">Cerrar sesión</a>
+              {{else}}  
+                <a href="/crear-cuenta" class="dropdown-item">Regístrarse</a>
+                <div class="dropdown-divider"></div>
+                <a href="/iniciar-sesion" class="dropdown-item">Iniciar sesión</a>
+              {{/if}}        
+            </div>
           </li>
         </ul>
       </div>

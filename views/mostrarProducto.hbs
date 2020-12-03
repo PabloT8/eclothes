@@ -21,7 +21,8 @@
       </div>
       <div class="row">
         <div class="col-md-7 col-sm-6">
-          <img src="../uploads/products/{{producto.imagen}}" alt="Imagen del producto" style="max-width: 620px; max-height: 389px;">
+          <img src="../uploads/products/{{producto.pictures.[0]}}" alt="Imagen del producto" style="max-width: 620px; max-height: 389px;">
+          <img src="../uploads/products/{{producto.pictures.[1]}}" alt="Imagen del producto" style="max-width: 620px; max-height: 389px;">
         </div>
         <div class="col-md-5 col-sm-6">
           <h2>{{producto.nombre}}</h2>
@@ -32,7 +33,7 @@
           <hr />
           <div class="row">
             <div class="col-md-7 offset-md-5 col-sm-8">
-              <a href="/carrito/{{producto.url}}" class="btn btn-danger-btn-block-btn-round">Agregar al carrito</a>
+              <a href="/carrito/{{producto._id}}" class="btn btn-danger-btn-block-btn-round">Agregar al carrito</a>
             </div>
           </div>
         </div>

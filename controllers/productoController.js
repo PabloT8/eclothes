@@ -1,18 +1,19 @@
 // Importar los módulos requeridos
 const mongoose = require("mongoose");
 const Producto = mongoose.model("Producto");
-const Carrito = mongoose.model("Carrito");
+var Carrito = require("../models/carrito");
+//const Carrito = mongoose.model("carrito");
 const { validationResult } = require("express-validator");
-const multer = require("multer");
+const multer = require("multer"); 
 const shortid = require("shortid");
 
 const year = new Date().getFullYear();
 
-// Mostrar el formulario de creación de producto
+//Mostrar el formulario de creacion de producto
 exports.formularioCrearProducto = (req, res, next) => {
-  res.render("crearProducto", {
-    year,
-  });
+    res.render("crearProducto", {
+        year
+    })
 };
 
 // Crear un producto
@@ -36,11 +37,20 @@ exports.crearProducto = async (req, res, next) => {
     try {
       const { nombre, descripcion, precio, estado } = req.body;
 
+      const picture = [];
+
+      for(let x=0; x< req.files.length; x++){
+        if(req.files.length > 0){
+          picture[x]=req.files[x].filename;
+        }
+      }
+
+
       await Producto.create({
         nombre,
         descripcion,
         precio,
-        imagen: req.file.filename,
+        pictures: picture,
         vendedor: req.user._id,
       });
 
@@ -63,7 +73,7 @@ exports.crearProducto = async (req, res, next) => {
   }
 };
 
-// Permite subir un archivo (imagen) al servidor
+
 exports.subirImagen = (req, res, next) => {
   // Verificar que no existen errores de validación
   // const errores = validationResult(req);
@@ -80,7 +90,7 @@ exports.subirImagen = (req, res, next) => {
   // } else {
   // Subir el archivo mediante Multer
   upload(req, res, function (error) {
-    console.log(req.body);
+    //console.log(req.body);
     if (error) {
       // Errores de Multer
       if (error instanceof multer.MulterError) {
@@ -112,7 +122,7 @@ exports.subirImagen = (req, res, next) => {
     }
   });
   // }
-};
+};  
 
 // Opciones de configuración para multer en productos
 const configuracionMulter = {
@@ -158,78 +168,17 @@ exports.verProducto = async (req, res, next) => {
     .lean();
 
   // Buscar productos en el carrito de compras si existen
-  const carrito = await Carrito.findOne({ usuario: req.user._id });
+//  const carrito = await Carrito.findOne({ usuario: req.user._id });
 
   if (!producto) res.redirect("/");
   else {
-    res.render("mostrarProducto", {
-      producto,
-      productosCarrito: carrito ? carrito.producto.length : 0,
-    });
+    res.render("mostrarProducto", {producto});
   }
 };
 
-// Función que sube el archivo
-const upload = multer(configuracionMulter).single("imagen");
 
-// Agrega productos al carrito de compras
-exports.agregarProductoCarrito = async (req, res, next) => {
-  try {
-    // Obtener el producto a través del URL
-    const { url } = req.params;
 
-    const producto = await Producto.findOne({ url });
 
-    // Buscar si el usuario ya tiene un carrito existente
-    const carrito = await Carrito.findOne({ usuario: req.user._id });
 
-    console.log(carrito);
-
-    // Si el carrito no existe
-    if (!carrito) {
-      // Crear el arreglo de productos
-      const productos = [];
-      productos.push(producto);
-
-      const nuevoCarrito = new Carrito({
-        producto: productos,
-        usuario: req.user._id,
-        fecha: Date.now(),
-        total: producto.precio,
-      });
-
-      // Almacenar el carrito
-      await nuevoCarrito.save();
-
-      req.flash("messages", [
-        {
-          message: "Producto agregado a tu carrito de compras",
-          alertType: "success",
-        },
-      ]);
-
-      // Redireccionar
-      res.redirect("/");
-    }
-
-    // Ya existe un carrito almacenado para el usuario
-    carrito.producto.push(producto);
-
-    // Actualizar el total del carrito
-    carrito.total += producto.precio;
-
-    // Almacenar el nuevo producto
-    await carrito.save();
-
-    req.flash("messages", [
-      {
-        message: "Producto agregado a tu carrito de compras",
-        alertType: "success",
-      },
-    ]);
-
-    res.redirect("/");
-  } catch (error) {
-    // console.log(error);
-  }
-};
+  // Función que sube el archivo
+const upload = multer(configuracionMulter).array("imagen");
