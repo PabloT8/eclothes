@@ -14,6 +14,7 @@ exports.autenticarUsuario = passport.authenticate("local", {
   badRequestMessage: ["Debes ingresar tus credenciales"],
 });
 
+
 // Cerrar la sesión del usuario
 exports.cerrarSesion = (req, res, next) => {
   const messages = [];
@@ -219,3 +220,4 @@ exports.verificarInicioSesion = (req, res, next) => {
   // Si no se auntenticó, redireccionar al inicio de sesión
   res.redirect("/iniciar-sesion");
 };
+

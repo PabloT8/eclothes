@@ -1,6 +1,8 @@
 // Importar los módulos requeridos
 const mongoose = require("mongoose");
 const Producto = mongoose.model("Producto");
+var Carrito = require("../models/carrito");
+//const Carrito = mongoose.model("carrito");
 const { validationResult } = require("express-validator");
 const multer = require("multer"); 
 const shortid = require("shortid");
@@ -35,11 +37,20 @@ exports.crearProducto = async (req, res, next) => {
     try {
       const { nombre, descripcion, precio, estado } = req.body;
 
+      const picture = [];
+
+      for(let x=0; x< req.files.length; x++){
+        if(req.files.length > 0){
+          picture[x]=req.files[x].filename;
+        }
+      }
+
+
       await Producto.create({
         nombre,
         descripcion,
         precio,
-        imagen: req.file.filename,
+        pictures: picture,
         vendedor: req.user._id,
       });
 
@@ -155,7 +166,7 @@ exports.verProducto = async (req, res, next) => {
   const producto = await Producto.findOne({ url: req.params.url })
     .populate("vendedor")
     .lean();
-
+    
   // Buscar productos en el carrito de compras si existen
 //  const carrito = await Carrito.findOne({ usuario: req.user._id });
 
@@ -165,5 +176,12 @@ exports.verProducto = async (req, res, next) => {
   }
 };
 
+
+
+
+
+
+
+
   // Función que sube el archivo
-const upload = multer(configuracionMulter).single("imagen");
+const upload = multer(configuracionMulter).array("imagen",3);
