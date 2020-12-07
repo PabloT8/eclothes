@@ -78,3 +78,9 @@ exports.formularioIniciarSesion = (req, res, next) => {
     year,
   });
 };
+
+//--Luis
+exports.perfil = (req, res, next) => {
+  res.render("perfil")
+};
+//
