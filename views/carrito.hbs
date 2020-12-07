@@ -1,0 +1,138 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+{{#if login}}
+    {{#if producto}}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-ofsset-3 col-sm-offset-3">
+            <ul class="list-group">
+                {{#each producto}}
+                <li class="list-group-item">
+                    <span class="badge badge-dark">{{qty}}</span>
+                    <strong>{{item.nombre}}</strong>
+                    <span class="label label-success">L. {{item.precio}}</span>
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Acción <span
+                                class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Quitar 1</a></li>
+                            <li><a href="#">Quitar todos</a></li>
+                        </ul>
+                    </div>
+                </li>
+                
+    {{/each}}
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <strong>Total: {{this.precioTotal}}</strong>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <button type="button" class="btn btn-success">Realizar compra</button>
+        </div>
+    </div>
+
+    <div id="paypal-button"></div>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script>
+    paypal.Button.render({
+        // Configure environment
+        env: 'sandbox',
+        client: {
+        sandbox: 'AQX0PgoIy8oLiSftQjSqTIhJP9u0P9Fwc3gKeHWmFY3UiWzQX6uac-1xuB3UYvKA1rKZLOTFuunuwKJa',
+        production: 'demo_production_client_id'
+        },
+        // Customize button (optional)
+        locale: 'en_US',
+        style: {
+        size: 'small',
+        color: 'gold',
+        shape: 'pill',
+        },
+
+        // Enable Pay Now checkout flow (optional)
+        commit: true,
+
+        // Set up a payment
+        payment: function(data, actions) {
+        return actions.payment.create({
+            transactions: [{
+            amount: {
+                total: {{precioTotal}},
+                currency: 'USD'
+            }
+            }],
+            redirect_urls: {
+          return_url: '/gracias',
+          cancel_url: 'https://example.com'
+        }
+        });
+        },
+        // Execute the payment
+        onAuthorize: function(data, actions) {
+      return actions.payment.execute().then(function() {
+        // Show a confirmation message to the buyer
+        window.alert('Thank you for your purchase!');
+         actions.redirect();
+      });
+    }
+  }, '#paypal-button');
+
+    </script>
+
+    {{else}}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <strong>No hay articulos en el carrito: </strong>
+        </div>
+    </div>
+    {{/if}}
+
+{{else}}
+{{#if producto}}
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-md-ofsset-3 col-sm-offset-3">
+        <ul class="list-group">
+            {{#each producto}}
+            <li class="list-group-item">
+                <span class="badge badge-dark">{{qty}}</span>
+                <strong>{{item.nombre}}</strong>
+                <span class="label label-success">L. {{item.precio}}</span>
+                <div class="btn-group">
+                    <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Acción <span
+                            class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Quitar 1</a></li>
+                        <li><a href="#">Quitar todos</a></li>
+                    </ul>
+                </div>
+            </li>
+            
+{{/each}}
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+        <strong>Total: {{this.precioTotal}}</strong>
+    </div>
+</div>
+
+<strong>Para realizar la compra debes iniciar sesión</strong>
+
+{{else}}
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+        <strong>No hay articulos en el carrito: </strong>
+    </div>
+</div>
+{{/if}}
+{{/if}}
