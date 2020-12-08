@@ -16,7 +16,6 @@ const orden = require("../models/orden");
 
 // Configura y mantiene todos los endpoints en el servidor
 const router = express.Router();
-
 module.exports = () => {
   //var csrfProtection = csrf();
 //router.use(csrfProtection);
