@@ -47,6 +47,7 @@ exports.crearCuenta = async (req, res, next) => {
         email,
         password,
         nombre,
+        admin: false
       });
 
       // Mostrar un mensaje
@@ -81,6 +82,7 @@ exports.formularioIniciarSesion = (req, res, next) => {
 
 //--Luis
 exports.perfil = (req, res, next) => {
+  res.locals.role = req.user.admin;
   res.render("perfil")
 };
 //

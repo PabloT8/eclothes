@@ -20,6 +20,12 @@ module.exports = () => {
   //var csrfProtection = csrf();
 //router.use(csrfProtection);
   // Rutas disponibles
+  
+
+  
+
+  
+
   router.get("/", homeController.mostrarProductos);
 
   // Rutas para usuario
@@ -30,13 +36,15 @@ module.exports = () => {
   // Rutas para productos
   router.get(
     "/crear-producto",
-    authController.verificarInicioSesion,
+    //authController.verificarInicioSesion,
+    isAdmin,
     productoController.formularioCrearProducto
+    
   );
 
   router.post(
     "/crear-producto",
-    authController.verificarInicioSesion,
+    //authController.verificarInicioSesion,
     // [
     //   check("imagen", "Debes seleccionar una imagen para el producto")
     //     .not()
@@ -60,6 +68,8 @@ module.exports = () => {
     ],
     productoController.crearProducto
   );
+  
+  
 
   router.get("/perfil", authController.verificarInicioSesion, usuarioController.perfil);
   
@@ -123,7 +133,7 @@ router.get("/gracias", function(req, res, next) {
  });*/
   
 
- router.use("/", noLogeado, function(req, res, next){
+ router.use("/", noLogeado,  function(req, res, next){
     next();
   });
  //
@@ -186,9 +196,11 @@ router.get("/gracias", function(req, res, next) {
 
   
 
+  
 
   return router;
 };
+  
   
 
 //-- Luis
@@ -202,15 +214,20 @@ function noLogeado (req, res, next) {
   res.redirect("/");
 };
 //
-function Logeado (req, res, next) {
+
+function isAdmin (req, res, next) {
+  
   // Si el usuario se encuentra autenticado que siga con el siguiente middleware
-  if (req.isAuthenticated()){ 
+  if (req.isAuthenticated() && req.user.admin){ 
     return next();
   }
  
   // Si no se auntenticó, redireccionar al inicio de sesión
-  res.redirect("/");
+  res.redirect("/iniciar-sesion");
 };
+
+
+
 
 
 
