@@ -20,5 +20,7 @@ module.exports = function Carrito(viejoCarrito) {
             arr.push(this.items[id]);
         }
         return arr;
+
+        
     };
 };
