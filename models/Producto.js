@@ -36,7 +36,7 @@ const productoSchema = new mongoose.Schema({
     ref: "Usuarios",
   },
   fechaVenta: Date,
-  estado: String,
+  talla: String,
   publicar: Boolean,
 });
 // Hooks para generar la URL del producto
