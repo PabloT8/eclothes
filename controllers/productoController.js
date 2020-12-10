@@ -35,7 +35,7 @@ exports.crearProducto = async (req, res, next) => {
   } else {
     // Almacenar los valores del producto
     try {
-      const { nombre, descripcion, precio, estado } = req.body;
+      const { nombre, descripcion, precio, talla } = req.body;
 
       const picture = [];
 
@@ -52,6 +52,7 @@ exports.crearProducto = async (req, res, next) => {
         precio,
         pictures: picture,
         vendedor: req.user._id,
+        talla,
       });
 
       messages.push({
@@ -166,7 +167,7 @@ exports.verProducto = async (req, res, next) => {
   const producto = await Producto.findOne({ url: req.params.url })
     .populate("vendedor")
     .lean();
-
+    
   // Buscar productos en el carrito de compras si existen
 //  const carrito = await Carrito.findOne({ usuario: req.user._id });
 
@@ -175,6 +176,9 @@ exports.verProducto = async (req, res, next) => {
     res.render("mostrarProducto", {producto});
   }
 };
+
+
+
 
 
 

@@ -30,6 +30,7 @@ const usuarioSchema = new mongoose.Schema({
       type: String,
       required: true,
       trim: true},
+  admin: Boolean,
   ciudad: String,
   pais: String,
   token: String,

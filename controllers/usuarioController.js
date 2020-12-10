@@ -50,9 +50,9 @@ exports.crearCuenta = async (req, res, next) => {
         password,
         nombre,
         direccion,
-        telefono,
-        ciudad,
-       
+        ciudad
+        ,telefono,
+        admin: false
       });
 
       // Mostrar un mensaje
@@ -85,16 +85,14 @@ exports.formularioIniciarSesion = (req, res, next) => {
   });
 };
 
-//--Luis
-/*exports.perfil = (req, res, next) => {
-  res.render("perfil")
-};*/
+
 
 
 
 
 
 exports.perfil = (req, res, next) => {
+  res.locals.role = req.user.admin;
   const usuarios = req.user.nombre;
   
     nombre = req.user.nombre;
