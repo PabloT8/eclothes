@@ -113,6 +113,10 @@ exports.perfil = (req, res, next) => {
    
 }
 
+
+
+
+
 exports.usuariomain = (req, res, next) => {
   const usuarios = req.user.nombre;
   

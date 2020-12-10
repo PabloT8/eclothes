@@ -11,7 +11,7 @@ module.exports = function Carrito(viejoCarrito) {
         itemAlmacenado.qty++;
         itemAlmacenado.precio = itemAlmacenado.item.precio * itemAlmacenado.qty;
         this.cantidadTotal++;
-        this.precioTotal += itemAlmacenado.precio;
+        this.precioTotal += itemAlmacenado.item.precio;
     };
 
     this.generarArray = function() {

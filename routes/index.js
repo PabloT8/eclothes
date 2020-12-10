@@ -128,21 +128,16 @@ module.exports = () => {
   
 
 
-/*router.get("/misCompras",  function(req, res, next) {
-  Orden.find({user: req.user}, function(err, ordenes) {
-    if (err) {
-       return res.write("Error!"); 
-     }
-     var carrito;
-     ordenes.forEach(function(orden){
-      carrito =  new Carrito(orden.carrito);
-      
-       orden.items = carrito.generarArray();
-       console.log(orden.items);
-     });   
-     res.render("misCompras", {ordenes: ordenes});
-  });
- });*/
+router.get("/misCompras", async function(req, res, next) {
+
+  const name="perro";
+  
+  //var carrito = new Carrito(req.session.carrito);
+  const ordenes = await Orden.findOne({name: new RegExp('^'+name+'$', "i")}).lean();
+
+
+  res.render("misCompras",{ordenes});
+ });
 
 
 router.use("/", noLogeado, function (req, res, next) {
