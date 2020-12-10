@@ -15,62 +15,32 @@
   <script src="https://kit.fontawesome.com/d7bc68b35c.js" crossorigin="anonymous"></script>
   {{!-- Estilo personalizado --}}
   <link href="/css/styles.css" rel="stylesheet">
+ 
   <title>Bienvenido a eclothes</title>
 </head>
 
 <body class="{{typePage}} full-screen sidebar-collapse">
-  {{!-- Navbar --}}
-  <nav class="navbar navbar-expand-lg fixed-top bg-warning nav-down" color-on-scroll="500">
-    <div class="container">
-      <div class="navbar-translate">
+  <!--Inicio del navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand" href="/" style="color: black;">e-clothes</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
-        <a class="navbar-brand" href="/" rel="tooltip" title="E-clothes" data-placement="bottom" style="color: white;">
-          <img src="/img/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
-          e-clothes
-        </a>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/crear-cuenta" style="color: black;">Regístrate</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/iniciar-sesion"style="color: black;"> Iniciar Sesión</a>
+        </li>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-          aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-bar bar1"></span>
-          <span class="navbar-toggler-bar bar2"></span>
-          <span class="navbar-toggler-bar bar3"></span>
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" data-nav-image="../assets/img/blurred-image-1.jpg" data-color="orange">
-        <ul class="navbar-nav ml-auto">
-          <li class="dropdown nav-item">
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
-              Administración </a>
-            <div class="dropdown-menu">
-              <a href="/crear-producto" class="dropdown-item">
-                Crear producto
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="/" class="dropdown-item">
-                Ver productos
-              </a>
-            </div>
-          </li>
-          {{!-- Iniciar o cerrar sesión --}}
-          <li class="dropdown nav-item">
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
-              Cuenta </a>
-            <div class="dropdown-menu">
-              {{#if login}} 
-                <a href="/perfil" class="dropdown-item"> Tu perfil</a>
-                <div class="dropdown-divider"></div>
-                <a href="/cerrar-sesion" class="dropdown-item">Cerrar sesión</a>
-              {{else}}  
-                <a href="/crear-cuenta" class="dropdown-item">Regístrarse</a>
-                <div class="dropdown-divider"></div>
-                <a href="/iniciar-sesion" class="dropdown-item">Iniciar sesión</a>
-              {{/if}}        
-            </div>
-          </li>
-        </ul>
-      </div>
+      </ul>
     </div>
   </nav>
+  <!--Fin del navbar-->
   {{!-- Contenido principal --}}
   
   {{{body}}}

@@ -14,69 +14,76 @@
   {{!-- Íconos desde Fontawesome --}}
   <script src="https://kit.fontawesome.com/d7bc68b35c.js" crossorigin="anonymous"></script>
   {{!-- Estilo personalizado --}}
-  <link href="/css/custom-styles.min.css?v=2.3.1" rel="stylesheet">
+  <link href="/css/styles.css" rel="stylesheet">
   <title>eclothes</title>
 </head>
 
 <body class="search-page sidebar-collapse">
   {{!-- Navbar --}}
-  <nav class="navbar navbar-expand-lg fixed-top bg-warning nav-down" color-on-scroll="500">
-    <div class="container">
-      <div class="navbar-translate">
+  <nav class="navbar navbar-expand-lg navbar-light ">
+ <a class="navbar-brand" href="/" style="color: black;">e-clothes</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
-        <a class="navbar-brand" href="/" rel="tooltip" title="E-clothes" data-placement="bottom" style="color: white;">
-          <img src="/img/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
-          e-clothes
-        </a>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+         
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-          aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-bar bar1"></span>
-          <span class="navbar-toggler-bar bar2"></span>
-          <span class="navbar-toggler-bar bar3"></span>
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" data-nav-image="../assets/img/blurred-image-1.jpg" data-color="orange">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="btn btn-round btn-transparent" href="/carrito">
+
+
+      <li class="nav-item active">
+        <a class="btn btn-round btn-transparent" href="/carrito">
               <i class="fas fa-shopping-cart"></i> Carrito de compras
               <span class="badge badge-dark">{{session.carrito.cantidadTotal}}</span>
             </a>
-          </li>
-          <li class="dropdown nav-item">
+      </li>
+
+
+
+
+       {{#if login }}
+      <li class="dropdown nav-item">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
-              Administración </a>
+              Administración</a>
             <div class="dropdown-menu">
-              <a href="/crear-producto" class="dropdown-item">
+            
+               <a href="/crear-producto" class="dropdown-item">
                 Crear producto
               </a>
               <div class="dropdown-divider"></div>
               <a href="/" class="dropdown-item">
                 Ver productos
               </a>
+                    
             </div>
           </li>
+       <li class="dropdown nav-item">
+            <a href="" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
+              <img src="https://www.flaticon.es/svg/static/icons/svg/126/126486.svg" style="width: 30px; height: 30px;" alt="">{{usuarios}} </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-danger">
+              <a href="/perfil" class="dropdown-item">
+                Perfil
+              </a>
+              <a class="dropdown-item" href="/cerrar-sesion">
+              Cerrar sesión
+              </a>
+            </div>
+          </li>
+         {{else}}
+          <li class="nav-item">
+        <a class="nav-link" href="/iniciar-sesion">Iniciar Sesión</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="/crear-cuenta">Registrarse</a>
+      </li>
+       {{/if}}
+    </ul>
+  </div>
+</nav>
           {{!-- Iniciar o cerrar sesión --}}
-          <li class="dropdown nav-item">
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
-              Cuenta </a>
-            <div class="dropdown-menu">
-              {{#if login}} 
-                <a href="/perfil" class="dropdown-item"> Tu perfil</a>
-                <div class="dropdown-divider"></div>
-                <a href="/cerrar-sesion" class="dropdown-item">Cerrar sesión</a>
-              {{else}}  
-                <a href="/crear-cuenta" class="dropdown-item">Regístrarse</a>
-                <div class="dropdown-divider"></div>
-                <a href="/iniciar-sesion" class="dropdown-item">Iniciar sesión</a>
-              {{/if}}        
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+          
 
   {{!-- Contenido principal --}}
   {{{body}}}

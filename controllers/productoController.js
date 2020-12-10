@@ -181,4 +181,4 @@ exports.verProducto = async (req, res, next) => {
 
 
   // Función que sube el archivo
-const upload = multer(configuracionMulter).array("imagen");
+const upload = multer(configuracionMulter).array("imagen",3);

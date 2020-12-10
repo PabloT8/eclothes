@@ -72,8 +72,18 @@ module.exports = () => {
       console.log(req.session.carrito);
       res.redirect("/");
     });
+
     
 });
+
+//Rutas de perfil y direcciones de usuario
+router.get("/perfil", 
+authController.verificarInicioSesion,
+usuarioController.perfil);
+
+router.get("/layouts/main", 
+authController.verificarInicioSesion,
+usuarioController.usuariomain);
 
 router.get("/carrito", function(req, res, next) {
   if (!req.session.carrito){
@@ -81,6 +91,12 @@ router.get("/carrito", function(req, res, next) {
   }
   var carrito = new Carrito(req.session.carrito);
   res.render("carrito", {producto: carrito.generarArray(), precioTotal: carrito.precioTotal});
+});
+
+router.get("/gracias", function(req, res, next) {
+  var carrito = new Carrito(req.session.carrito);
+  req.session.carrito = null;
+  return res.render("gracias");
 });
   
 

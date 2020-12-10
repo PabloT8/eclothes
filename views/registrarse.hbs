@@ -1,42 +1,110 @@
-<div class="page-header">
-  <h1>.</h1>
-  <div class="register">
+<!DOCTYPE html>
+<html lang="en">
 
-    {{!-- Formulario de registro --}}
+<head>
 
-
-    {{!-- Mensajes para el usuario --}}
-
-
-    <div class="form-registrarse">
+  <!--===============================================================================================-->
+  <link href="/css/stylesW.css" rel="stylesheet">
+  <!--===============================================================================================-->
+</head>
 
 
-      <div class="loging-container">
-
-        {{>showMessages messages}}
-
-        <form method="post" action="/registrarse" class="form-register">
-          <h4>REGÍSTRATE</h4>
-          <input class="controls" type="text" id="inputNombre" name="nombre" placeholder="Nombre Completo"
-            value={{nombre}}>
-          <input class="controls" type="email" id="inputEmail" name="email" placeholder="Email address" value={{email}}>
-          <input class="controls" type="password" id="inputPassword" name="password" placeholder="Password"
-            value={{password}}>
-          <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
-
-          <button class="botons" type="submit">Registrar</button>
-          <p><a href="/iniciar-sesion">¿Ya tengo Cuenta?</a></p>
 
 
-          <p class="mt-5 mb-3 text-muted">E-clothes© 2020</p>
-        </form>
+
+<div class="container-login100">
+
+  <div class="login100-more" style="background-image: url('/img/fondo.jpg');">
+    <br>
+    <br>
+    <br>
+    <div class="errores" id="errores">
+      {{>showMessages messages}}
+    </div>
+  </div>
+
+
+  <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+
+    <form class="login100-form validate-form" method="post" action="/registrarse">
+
+
+      <span class="login100-form-title p-b-59">
+        REGÍSTRATE
+      </span>
+
+      <div class="wrap-input100 validate-input" data-validate="Name is required">
+        <span class="label-input100">Nombre completo</span>
+        <input class="input100" type="text" id="inputNombre" name="nombre" value={{nombre}}>
+        <span class="focus-input100"></span>
+      </div>
+
+      <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+        <span class="label-input100">Correo electrónico</span>
+        <input class="input100" type="email" id="inputEmail" name="email" value={{email}}>
+        <span class="focus-input100"></span>
+      </div>
+
+
+
+      <div class="wrap-input100 validate-input" data-validate="Password is required">
+        <span class="label-input100">Contraseña</span>
+        <input class="input100" type="password" id="inputPassword" name="password" value={{password}}>
+        <span class="focus-input100"></span>
+      </div>
+
+      <div class="wrap-input100 validate-input" data-validate="Direccion incorrecta, escriba solo texto">
+        <span class="label-input100">Dirección</span>
+        <input class="input100" type="text" id="inputDireccion" name="direccion" value={{direccion}}>
+        <span class="focus-input100"></span>
+      </div>
+
+      <div class="wrap-input100 validate-input" data-validate="Ciudad incorrecta, escriba solo texto">
+          <span class="label-input100">Ciudad</span>
+        <input class="input100" type="text" id="inputCiudad" name="ciudad" value={{ciudad}}>
+        <span class="focus-input100"></span>
+        
+      </div>
+
+
+       <div class="wrap-input100 validate-input" data-validate="Telefono invalido,formato correcto: 3344-0145">
+        <span class="label-input100">Teléfono</span>
+        <input class="input100" type="text" id="inputDireccion" name="telefono" value={{telefono}}>
+        <span class="focus-input100"></span>
+      </div>
+
+
+
+      <div class="flex-m w-full p-b-33">
+        <div class="contact100-form-checkbox">
+          <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+          <label class="label-checkbox100" for="ckb1">
+            <span class="txt1">
+              Estoy de acuerdo con
+              <a href="#" class="txt2 hov1" required="">
+                Terminos y Condiciones
+              </a>
+            </span>
+          </label>
+        </div>
 
 
       </div>
 
+      <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+          <div class="login100-form-bgbtn"></div>
+          <button class="login100-form-btn" type="submit">
+            Registrar
+          </button>
+        </div>
 
-    </div>
-
+        <a href="/iniciar-sesion" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+          Iniciar sesión
+          <i class="fa fa-long-arrow-right m-l-5"></i>
+        </a>
+      </div>
+      <p class="mt-5 mb-3 text-muted">E-clothes© 2020</p>
+    </form>
   </div>
 </div>
-

@@ -18,6 +18,7 @@ module.exports = function Carrito(viejoCarrito) {
         var arr = [];
         for (var id in this.items){
             arr.push(this.items[id]);
+           
         }
         return arr;
     };

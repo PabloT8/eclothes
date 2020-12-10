@@ -1,8 +1,128 @@
 <br>
 <br>
+
+<link href="/css/stylesxD.css" rel="stylesheet">
+{{#if login}}
+{{#if producto}}
+
+    <div class="row add-row">
+        
+            {{#each producto}}
+
+            <div class='col-md-4 col-sm-4'>
+                <div class='product--blue'>
+                    <div class='product_inner'>
+                        <p style="color: black;">Cantidad: {{qty}}</p>
+                        <img src='../uploads/products/{{item.pictures.[0]}}' width='300'>
+                        <p>{{item.nombre}}</p>
+                        <p>Talla</p>
+                        <p>L. {{item.precio}}</p>
+                        <button>Eliminar</button>
+                    </div>
+                    <div class='product_overlay'>
+                        <h2>Eliminar</h2>
+                        <i class='fa fa-check'></i>
+                    </div>
+                </div>
+
+            </div>
+
+            {{/each}}
+        
+    </div>
+
+
+<br>
+
+
+<div id="paypal-button"></div>
 <br>
 <br>
 <br>
+<br>
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+<script>
+    paypal.Button.render({
+        // Configure environment
+        env: 'sandbox',
+        client: {
+            sandbox: 'AQX0PgoIy8oLiSftQjSqTIhJP9u0P9Fwc3gKeHWmFY3UiWzQX6uac-1xuB3UYvKA1rKZLOTFuunuwKJa',
+            production: 'demo_production_client_id'
+        },
+        // Customize button (optional)
+        locale: 'en_US',
+        style: {
+            size: 'small',
+            color: 'gold',
+            shape: 'pill',
+        },
+
+        // Enable Pay Now checkout flow (optional)
+        commit: true,
+
+        // Set up a payment
+        payment: function (data, actions) {
+            return actions.payment.create({
+                transactions: [{
+                    amount: {
+                        total: {{ precioTotal }},
+                currency: 'USD'
+            }
+    }],
+        redirect_urls: {
+        return_url: '/gracias',
+        cancel_url: 'https://example.com'
+    }
+        });
+        },
+    // Execute the payment
+    onAuthorize: function(data, actions) {
+        return actions.payment.execute().then(function () {
+            // Show a confirmation message to the buyer
+            window.alert('Thank you for your purchase!');
+            actions.redirect();
+        });
+    }
+  }, '#paypal-button');
+
+</script>
+<br>
+<div class="footer">
+
+<div class="totalpagar">
+   
+        <p style="font-family:  inherit; font-size: 20px; color:black;">Total: {{this.precioTotal}} HNL</p>
+    
+</div>
+
+
+<div class="realizarC">
+    
+        <button type="button" class="btn" style="background-color: rgba(236, 125, 227, 0.829); color:blanchedalmond;">Realizar compra</button>
+    
+</div>
+<br>
+</div>
+
+{{else}}
+<div class="caja">
+
+
+    <img src="https://static.zara.net/static//common/images/empty-basket/empty-basket.jpg" alt="Imagen del producto"
+        style="width: 995px;
+	height: 490px;">
+
+    <div class="texto1">
+        <h2 class="textoh">— Tu carrito está vacío —</h2>
+
+
+    </div>
+
+</div>
+{{/if}}
+
+{{else}}
 {{#if producto}}
 <div class="row">
     <div class="col-sm-6 col-md-6 col-md-ofsset-3 col-sm-offset-3">
@@ -11,37 +131,63 @@
             <li class="list-group-item">
                 <span class="badge badge-dark">{{qty}}</span>
                 <strong>{{item.nombre}}</strong>
+                <img src="../uploads/products/{{item.pictures.[0]}}" alt="Imagen del producto"
+                    style="max-width: 500px; max-height:350px;">
                 <span class="label label-success">L. {{item.precio}}</span>
                 <div class="btn-group">
-                    <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Acción <span
-                            class="caret"></span></button>
+                    <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Acción
+                        <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <li><a href="#">Quitar 1</a></li>
                         <li><a href="#">Quitar todos</a></li>
                     </ul>
                 </div>
             </li>
-            
 
+            {{/each}}
         </ul>
     </div>
 </div>
 <div class="row">
     <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-        <strong>Total: {{precio}}</strong>
+        <strong>Total: {{this.precioTotal}}</strong>
     </div>
 </div>
-{{/each}}
-<hr>
-<div class="row">
-    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-        <button type="button" class="btn btn-success">Realizar compra</button>
-    </div>
+
+<strong>Para realizar la compra debes iniciar sesión</strong>
+
+<div class="footer ">
+
 </div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
 {{else}}
-<div class="row">
-    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-        <strong>No hay articulos en el carrito: </strong>
+<div class="caja">
+
+
+    <img src="https://static.vecteezy.com/system/resources/previews/001/343/889/non_2x/vertical-empty-photo-frame-on-white-wall-in-room-free-vector.jpg"
+        alt="Imagen del producto" style="width: 995px;
+	height: 490px;">
+
+    <div class="texto1">
+        <h2 class="textoh">— Tu carrito está vacío —</h2>
+
+
     </div>
+
 </div>
+
+
+
+{{/if}}
+
 {{/if}}
