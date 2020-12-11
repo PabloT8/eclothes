@@ -130,11 +130,13 @@ module.exports = () => {
 
 router.get("/misCompras", async function(req, res, next) {
 
-  const name="perro";
   
-  //var carrito = new Carrito(req.session.carrito);
-  const ordenes = await Orden.findOne({name: new RegExp('^'+name+'$', "i")}).lean();
+  email= req.user.email;
+  
+  const ordenes = await Orden.find( {email}).lean();
 
+
+  
 
   res.render("misCompras",{ordenes});
  });
