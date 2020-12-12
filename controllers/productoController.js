@@ -35,7 +35,7 @@ exports.crearProducto = async (req, res, next) => {
   } else {
     // Almacenar los valores del producto
     try {
-      const { nombre, descripcion, precio, talla } = req.body;
+      const { nombre, descripcion, precio, talla,categoria } = req.body;
 
       const picture = [];
 
@@ -53,6 +53,7 @@ exports.crearProducto = async (req, res, next) => {
         pictures: picture,
         vendedor: req.user._id,
         talla,
+        categoria,
       });
 
       messages.push({

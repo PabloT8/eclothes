@@ -127,6 +127,33 @@ module.exports = () => {
   });
   
 
+  router.get("/mostrarProductoCategoria", async function(req, res, next) {
+
+  
+    categoria= "Calsoneta";
+    
+    const mostrarCategorias = await Producto.find( {categoria:"Calsoneta"}).lean();
+  
+  
+    
+  
+    res.render("mostrarProductoCategoria",{mostrarCategorias});
+   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 router.get("/misCompras", async function(req, res, next) {
 
