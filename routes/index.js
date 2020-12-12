@@ -125,6 +125,25 @@ module.exports = () => {
     });
     
   });
+
+  router.get('/eliminar/:id', (req, res, next) => {
+    var productoId = req.params.id;
+    var carrito = new Carrito(req.session.carrito ? req.session.carrito : { items: {} });
+    carrito.eliminarItems(productoId);
+    req.session.carrito = carrito;
+    res.redirect('/carrito');
+
+  });
+
+  router.get('/reducir/:id', (req, res, next) => {
+    var productoId = req.params.id;
+    var carrito = new Carrito(req.session.carrito ? req.session.carrito : { items: {} });
+    carrito.reducirItem(productoId);
+    req.session.carrito = carrito;
+    res.redirect('/carrito');
+
+  });
+
   
 
   router.get("/mostrarProductoCategoria", async function(req, res, next) {
