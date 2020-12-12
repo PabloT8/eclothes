@@ -21,11 +21,13 @@ const productoSchema = new mongoose.Schema({
     required: true,
   },
   fechaCreacion: Date,
+
   url: {
     type: String,
     lowercase: true,
   },
-  etiquetas: String,
+  categoria: {type: String,
+    required: true},
   vendedor: {
     type: mongoose.Schema.ObjectId,
     ref: "Usuarios",
