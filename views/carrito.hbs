@@ -17,7 +17,9 @@
                         <p>{{item.nombre}}</p>
                         <p>Talla: {{item.talla}}</p>
                         <p>L. {{item.precio}}</p>
-                        <button>Eliminar</button>
+                        <button ><a href="/eliminar/{{this.item._id}}">Eliminar</a></button>
+                        <button ><a href="/reducir/{{this.item._id}}">Reducir 1</a></button>
+
                     </div>
                     <div class='product_overlay'>
                         <h2>Eliminar</h2>
