@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div class="main">
+    <div class="section section-white section-search">
+      <div class="container">
+        {{!-- Mensajes para el usuario --}}
+        {{> showMessages messages}}
+        <div class="row">
+          <div class="col-md-8 col-12 ml-auto mr-auto text-center">
+            <h4>Tus productos</h4>
+            <div class="row add-row" id="panel-productos">
+              {{#each productos as |producto|}}
+              <div class="col-md-4 col-sm-4">
+                <h5>{{producto.nombre}}</h5>
+                <p class="price"><strong>L {{producto.precio}}</strong></p>
+                <p>{{producto.descripcion}}</p>
+                {{!-- <div class="col-md-3 ml-auto col-sm-4"> --}}
+                <img src="uploads/products/{{imagen}}" class="img-responsive" />
+                {{!-- </div> --}}
+                <a href="/producto/{{producto.url}}" class="btn btn-secondary btn-round">Ver más</a>
+                <a href="#" data-eliminar="{{producto._id}}" class="btn btn-danger btn-round">Eliminar</a>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -201,7 +201,7 @@ router.get("/gracias", function(req, res, next) {
   return router;
 };
   
-  
+
 
 //-- Luis
 function noLogeado (req, res, next) {
@@ -228,6 +228,23 @@ function isAdmin (req, res, next) {
 
 
 
+//Ruta para mostrar productos 
+router.get(
+  "/productos-usuario", 
+  authController.verificarInicioSesion, 
+  productoController.mostrarProductosUsuario
+);
 
+//Ruta eliminar
+/*router.delete(
+  "/producto/:id", 
+  authController.verificarInicioSesion, 
+  productoController.mostrarProductosUsuario
+);*/
+router.delete(
+  "/producto/:id",
+  authController.verificarInicioSesion,
+  productoController.eliminarProducto
+);
 
 

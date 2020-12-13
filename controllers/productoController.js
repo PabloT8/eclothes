@@ -180,7 +180,65 @@ exports.verProducto = async (req, res, next) => {
 
 
 
+/*//Muestra los productos del usuario 
+exports.mostrarProductosUsuario = async (req, res, next) => {
+  try {
+    const productos = await Producto.find({vendedor: req.user._id}).lean();
+    res.render("productosUsuario", {productos});
+  } catch (error) {
+    console.log(error);
+    next();
+  }
+}
 
+// Elimina un producto
+exports.eliminarProducto = async (req, res, next) => {
+  // Obtener el id del producto
+  const { id } = req.params;
+
+  const producto = await Producto.findById(id);
+
+  if (producto) {
+    // Eliminar el producto
+    producto.remove();
+    res.status(200).send("El producto ha sido eliminado correctamente");
+  } else {
+    // Producto no encontrado o no se puede eliminar
+    console.log(error);
+    res.status(403).send("Error al momento de eliminar el producto");
+  }
+};*/
+
+// Muestra los productos de un usuario en específico
+exports.mostrarProductosUsuario = async (req, res, next) => {
+  // Buscar los productos del usuario actual
+  try {
+    const productos = await Producto.find({ vendedor: req.user._id }).lean();
+
+    res.render("productosUsuario", { productos });
+  } catch (error) {
+    console.log(error);
+    next();
+  }
+};
+
+// Elimina un producto
+exports.eliminarProducto = async (req, res, next) => {
+  // Obtener el id del producto
+  const { id } = req.params;
+
+  const producto = await Producto.findById(id);
+
+  if (producto) {
+    // Eliminar el producto
+    producto.remove();
+    res.status(200).send("El producto ha sido eliminado correctamente");
+  } else {
+    // Producto no encontrado o no se puede eliminar
+    console.log(error);
+    res.status(403).send("Error al momento de eliminar el producto");
+  }
+};
 
 
 
