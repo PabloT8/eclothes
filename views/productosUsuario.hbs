@@ -14,7 +14,7 @@
                 <p class="price"><strong>L {{producto.precio}}</strong></p>
                 <p>{{producto.descripcion}}</p>
                 {{!-- <div class="col-md-3 ml-auto col-sm-4"> --}}
-                <img src="uploads/products/{{imagen}}" class="img-responsive" />
+                <img src="uploads/products/{{imagen}}" class="img-responsive" style="max-width: 300px; max-height: 150px; ">
                 {{!-- </div> --}}
                 <a href="/producto/{{producto.url}}" class="btn btn-secondary btn-round">Ver más</a>
                 <a href="#" data-eliminar="{{producto._id}}" class="btn btn-danger btn-round">Eliminar</a>

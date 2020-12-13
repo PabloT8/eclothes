@@ -8,22 +8,27 @@
         <h1>Mis Compras</h1>
         <hr>
         <h2>Mis Ordenes</h2>
-        {{#each ordenes}}
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <ul class="list-group">
-                        {{#each this.items}}
-                            <li class="list-group-item">
-                                <span class="badge">${{this.precio}}</span>
-                                {{this.item.nombre}} | {{this.item.nombre}} Unidades
-                            </li>
-                        {{/each}}
-                    </ul>
-                </div>
-                <div class="panel-footer">
-                    <strong>Precio Total: ${{this.carrito.precioTotal}}</strong>
-                </div>
+  
+  
+         <div class="row add-row ">
+             {{#each ordenes as |orden| }}
+              <div class="col-md-4 col-sm-4">
+                <h5>Name:   {{orden.name}}</h5>
+                <h5>Email:  {{orden.email}}</h5>
+                
+
+            
+            
+                    <h5> productos: {{orden.products.nombre}}</h5>
+
+
+
+               </div>
+               <h5>Precio Total: {{orden.cart.precioTotal}} HNL</h5>
+            {{/each}}
             </div>
-        {{/each}}
+
+
+
     </div>
 </div>

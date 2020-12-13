@@ -22,7 +22,9 @@ exports.crearCuenta = async (req, res, next) => {
   const errores = validationResult(req);
   const messages = [];
   // Obtener las variables desde el cuerpo de la petición
-  const { nombre, email, password } = req.body;
+  const { nombre, email, password ,direccion,
+    telefono,
+    ciudad} = req.body;
 
   // Si hay errores
   if (!errores.isEmpty()) {
@@ -47,6 +49,9 @@ exports.crearCuenta = async (req, res, next) => {
         email,
         password,
         nombre,
+        direccion,
+        ciudad
+        ,telefono,
         admin: false
       });
 
@@ -80,9 +85,49 @@ exports.formularioIniciarSesion = (req, res, next) => {
   });
 };
 
-//--Luis
+
+
+
+
+
+
 exports.perfil = (req, res, next) => {
   res.locals.role = req.user.admin;
-  res.render("perfil")
-};
-//
+  const usuarios = req.user.nombre;
+  
+    nombre = req.user.nombre;
+    direccion=req.user.direccion;
+    ciudad=req.user.ciudad;
+    telefono=req.user.telefono;
+    
+  
+    res.render("perfil", {
+        usuarios,
+        email: req.user.email,
+        telefono,
+        ciudad,
+        direccion,
+        
+    });
+
+   
+}
+
+
+
+
+
+exports.usuariomain = (req, res, next) => {
+  const usuarios = req.user.nombre;
+  
+    nombre = req.user.nombre;
+    
+  
+    res.render("/layouts/main", {
+        usuarios,
+        email: req.user.email,
+        nombre
+    });
+
+   
+}

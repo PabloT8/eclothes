@@ -35,7 +35,7 @@ exports.crearProducto = async (req, res, next) => {
   } else {
     // Almacenar los valores del producto
     try {
-      const { nombre, descripcion, precio, talla } = req.body;
+      const { nombre, descripcion, precio, talla,categoria } = req.body;
 
       const picture = [];
 
@@ -53,6 +53,7 @@ exports.crearProducto = async (req, res, next) => {
         pictures: picture,
         vendedor: req.user._id,
         talla,
+        categoria,
       });
 
       messages.push({
@@ -213,7 +214,7 @@ exports.eliminarProducto = async (req, res, next) => {
 exports.mostrarProductosUsuario = async (req, res, next) => {
   // Buscar los productos del usuario actual
   try {
-    const productos = await Producto.find({ vendedor: req.user._id }).lean();
+    const productos = await Producto.find().lean();
 
     res.render("productosUsuario", { productos });
   } catch (error) {
