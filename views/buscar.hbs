@@ -1,51 +1,108 @@
-<br>
-<br>
-<br>
-<br>
-<div class="wrapper">
-  <div class="main">
-    <div class="section section-white section-search">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-12 ml-auto mr-auto text-center">
-            <form role="search" class="form-inline search-form">
-              <div class="input-group no-border">
-                <span class="input-group-addon addon-xtreme no-border" id="basic-addon1"><i
-                    class="fa fa-search"></i></span>
+<link href="/css/stylesCategoria.css" rel="stylesheet">
 
 
-          <a href="/mostrarProductoCategoria">Calsoneta</a>
+<!-- https://www.pinterest.com/pin/75576099974715878/ -->
+<div class="nav__bar">
+  <a href="#" class="nav__trigger">
+    <div class="bars"></div>
+  </a>
+</div>
 
-                <input type="text" class="form-control input-xtreme no-border" placeholder="Buscar..."
-                  aria-describedby="basic-addon1">
-              </div>
-            </form>
-            <h6 class="text-muted">¿Es esto lo que búscas?</h6>
+<main class="main">
+  <br>
+  <br>
+  <br>
+  <br>
 
-            <div class="row add-row ">
-              {{#each productos as |producto|}}
-              <div class="col-md-4 col-sm-4">
-                <h5>{{producto.nombre}}</h5>
-                <p class="price"><strong>L {{producto.precio}}</strong></p>
-                <p>{{producto.descripcion}}</p>
-                {{!-- <div class="col-md-3 ml-auto col-sm-4"> --}}
-                <img src="uploads/products/{{pictures.[0]}}" class="img-responsive" style="max-width: 225px; max-height: 180px;" />
-                {{!-- </div> --}}
-                <a href="/producto/{{producto.url}}" class="btn btn-secondary btn-round">Ver más</a>
-              </div>
-              {{/each}}
-            </div>
+  <div class="titulo">
+    <h1>e-clothes</h1>
+    <p align="center"></p>
 
-          </div>
-        </div>
-      </div>
-    </div>
+
+    <br>
+    <br>
+    <br>
+
+
   </div>
-</div>
-
-<div>
   <br>
-  <br>
-</div>
 
-</div>
+  <form action="/productos/buscar/" class="search-form" role="search">
+    <div class="field" id="searchform">
+      <input type="text" id="searchterm" name="nombre" placeholder="¿Qué estás buscando?" />
+      <button type="submit" id="search">Buscar!</button>
+    </div>
+  </form>
+
+
+  {{!--<form class="search-form" role="search" action="/productos/busqueda/">
+    <div class="form-group md-form my-0 waves-light">
+      <input type="text" name="nombre" class="form-control" placeholder="Buscar">
+    </div>
+
+    --}}
+
+
+
+    <section class="content">
+
+
+      <div class="row add-row ">
+
+        {{#each productos as |producto|}}
+        <div class="col-md-4 col-sm-4">
+
+          <div class="cuadroProducto">
+
+
+
+            <a href="/producto/{{producto.url}}">
+              <div class="box box1">
+                <img src="../../uploads/products/{{pictures.[0]}}" alt="">
+                <span class="botton botton1">{{producto.nombre}}</span>
+
+                <p><strong>L. {{producto.precio}}.00</strong></p>
+              </div>
+             
+              
+          </div>
+          </a>
+          
+        </div>
+
+        {{/each}}
+
+
+      </div>
+
+
+
+
+
+
+
+    </section>
+</main>
+
+
+
+<nav class="nav">
+
+
+  <ul class="nav__list">
+    <li class="hola"><a href="/calzoneta">Calzonetas</a></li>
+    <li class="hola"><a href="/pantalon">Pantalones</a></li>
+    <li class="hola"><a href="/zapato">Zapatos</a></li>
+    <li class="hola"><a href="/camisa">Camisas</a></li>
+    <li class="hola"><a href="/abrigos">Abrigos</a></li>
+    <li class="hola"><a href="/traje">Trajes</a></li>
+  </ul>
+</nav>
+
+
+<script src="/js/categorias.js"></script>
+
+
+
+
+<script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>

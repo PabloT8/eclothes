@@ -1,26 +1,80 @@
 <div class="textoperfil">
-          
 
-            <h1>DATOS PERSONALES</h1>
 
-            
+    <h1> <strong>DATOS PERSONALES</strong> </h1>
+    <p>
+        Podrás acceder y modificar tus datos personales (nombre, dirección de facturación, teléfono,...) 
+        para facilitar tus futuras compras y notificarnos cambios en tus datos de contacto.
+    </p>
+    <br>
+    <br>
+    <br>
+   
+
 </div>
-            <div class="perfil">
-              
-             
-                <h5>Nombre: {{usuarios}}</h5>
-                <h5>Correo: {{email}}</h5>
-                 <h5>Telefono: {{telefono}}</h5>
-                <h5>Ciudad: {{ciudad}}</h5>
-                <h5>Direccion: {{direccion}}</h5>
-               
-               
-             
+
+
+<div class="perfil">
+
+    <form class="form2 tablef" action="#" method="post">
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">Correo:</label>
+                <input type="text" class="form-control" id="validationCustom02" name="email" placeholder="Correo" readonly="readonly"
+                    value="{{email}}" required>
+
             </div>
 
-            <div>
-                <a href="/misCompras">MIS COMPRAS</a>
+
+
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Nombre:</label>
+                <input type="text" class="form-control" id="validationCustom01" name="nombre"  placeholder="Nombre"
+                    value="{{usuarios}}" required>
+
             </div>
 
-        
 
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">Teléfono:</label>
+                <input type="text" class="form-control" id="validationCustom02" name="telefono" placeholder="Teléfono"
+                    value="{{telefono}}" required>
+
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Ciudad:</label>
+                <input type="text" class="form-control" id="validationCustom03" name="ciudad" placeholder="Ciudad"
+                    value="{{ciudad}}" required>
+
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom04">Dirección:</label>
+                <input type="text" class="form-control" id="validationCustom04" name="direccion" placeholder="Dirección"
+                    value="{{direccion}}" required>
+
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+
+            <button class="btn btn-dark" type="submit">Actualizar datos personales</button>
+
+                <div class="comprasBtn">
+                             <button class="btn btn-dark" onclick="location.href='/misCompras';"  type="button" >Mis compras</button>
+
+                </div>
+           
+
+        </div>
+
+
+</form>
+
+</div>

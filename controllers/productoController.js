@@ -162,6 +162,12 @@ const configuracionMulter = {
   },
 };
 
+
+
+
+
+
+
 // Muestra un producto que se obtiene a través de su URL
 exports.verProducto = async (req, res, next) => {
   // Utilizar la opción populate para obtener información sobre un Object_ID
@@ -176,6 +182,15 @@ exports.verProducto = async (req, res, next) => {
   else {
     res.render("mostrarProducto", {producto});
   }
+};
+
+
+exports.busqueda = async (req, res, next) => {
+  const productos = await Producto.find({
+    nombre: new RegExp(req.query.nombre, "i"),
+  }).lean();
+
+  res.render("buscar",{productos});
 };
 
 

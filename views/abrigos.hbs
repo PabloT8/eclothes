@@ -1,0 +1,91 @@
+
+
+<link href="/css/stylesCategoria.css" rel="stylesheet">
+
+
+
+
+<!-- https://www.pinterest.com/pin/75576099974715878/ -->
+<div class="nav__bar">
+    <a href="#" class="nav__trigger">
+        <div class="bars"></div>
+    </a>        
+</div>
+
+<main class="main">
+   
+    <section class="hero">
+        <div class="hero__content">
+            <h2 class="hero__heading">Abrigos</h2>
+            
+        </div>
+    </section>
+  
+    
+
+
+
+
+<section class="content">
+      
+<div class="row add-row ">
+
+        {{#each mostrarCategorias as |categoria|}}
+        <div class="col-md-4 col-sm-4">
+
+          <div class="cuadroProducto">
+
+
+
+            <a href="/producto/{{categoria.url}}">
+              <div class="box box1">
+                <img src="../../uploads/products/{{pictures.[0]}}" alt="">
+                <span class="botton botton1">{{categoria.nombre}}</span>
+
+                <p><strong>L. {{categoria.precio}}.00</strong></p>
+              </div>
+             
+              
+          </div>
+          </a>
+        </div>
+
+        {{/each}}
+
+
+      </div>
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+</main>
+
+
+
+<nav class="nav">
+
+
+    <ul class="nav__list">
+        <li class="hola"><a href="/calzoneta">Calzonetas</a></li>
+        <li class="hola"><a href="/pantalon">Pantalones</a></li>
+        <li class="hola"><a href="/zapato">Zapatos</a></li>
+        <li class="hola"><a href="/camisa">Camisas</a></li>
+        <li class="hola"><a href="/abrigos">Abrigos</a></li>
+        <li class="hola"><a href="/traje">Trajes</a></li>
+    </ul>
+</nav>
+
+
+ <script src="/js/categorias.js"></script>

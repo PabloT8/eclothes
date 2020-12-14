@@ -71,7 +71,9 @@ module.exports = () => {
 
 
 
-  router.get("/perfil", authController.verificarInicioSesion, usuarioController.perfil);
+  
+
+  router.post("/perfil", authController.verificarInicioSesion,usuarioController.modificarUsuario);
 
 
 
@@ -123,8 +125,16 @@ module.exports = () => {
       req.session.carrito = null;
       return res.render("gracias");
     });
-    
+  
   });
+
+
+  router.get("/productos/buscar/", productoController.busqueda);
+
+
+
+
+
 
   router.get('/eliminar/:id', (req, res, next) => {
     var productoId = req.params.id;
@@ -144,35 +154,52 @@ module.exports = () => {
 
   });
 
-  
 
-  router.get("/mostrarProductoCategoria", async function(req, res, next) {
+
+
+  router.get("/pruebauno",  function(req, res, next) {
+    
+       res.render("pruebauno");
+       });
 
   
-    categoria= "Calsoneta";
-    
-    const mostrarCategorias = await Producto.find( {categoria:"Calsoneta"}).lean();
-  
-  
-    
-  
-    res.render("mostrarProductoCategoria",{mostrarCategorias});
+//Rutas de categorias
+  router.get("/calzoneta", async function(req, res, next) {
+const mostrarCategorias = await Producto.find( {categoria:"Calzoneta"}).lean();
+   res.render("calzoneta",{mostrarCategorias});
    });
 
 
+   router.get("/pantalon", async function(req, res, next) {
+    const mostrarCategorias = await Producto.find( {categoria:"Pantalon"}).lean();
+       res.render("pantalon",{mostrarCategorias});
+       });
+       router.get("/zapato", async function(req, res, next) {
+        const mostrarCategorias = await Producto.find( {categoria:"Zapato"}).lean();
+           res.render("zapato",{mostrarCategorias});
+           });
+           router.get("/camisa", async function(req, res, next) {
+            const mostrarCategorias = await Producto.find( {categoria:"Camisa"}).lean();
+               res.render("camisa",{mostrarCategorias});
+               });
+               router.get("/abrigos", async function(req, res, next) {
+                const mostrarCategorias = await Producto.find( {categoria:"Abrigo"}).lean();
+                   res.render("abrigos",{mostrarCategorias});
+                   });
+                   router.get("/traje", async function(req, res, next) {
+                    const mostrarCategorias = await Producto.find( {categoria:"Traje"}).lean();
+                       res.render("traje",{mostrarCategorias});
+                       });
 
 
+                       router.get("/prueba", function(req, res, next) {
+                      
+                           res.render("prueba");
+                           });
 
 
-
-
-
-
-
-
-
-
-
+//fin de rutas de Cotegorias
+////////////////////////
 
 router.get("/misCompras", async function(req, res, next) {
 

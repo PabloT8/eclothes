@@ -86,6 +86,26 @@ exports.formularioIniciarSesion = (req, res, next) => {
 };
 
 
+exports.modificarUsuario = async (req, res, next) => {
+  const {nombre, telefono, ciudad,direccion } = req.body;
+  try {
+    const email = req.user.email;
+    const usuario = await Usuario.findOne({email});
+    usuario.telefono = telefono;
+    usuario.direccion = direccion;
+    usuario.nombre=nombre;
+    
+    usuario.ciudad = ciudad;
+    console.log(usuario);
+    await usuario.save();
+    res.redirect("/perfil");
+  } catch (error) {
+    res.redirect("/perfil");
+  }
+ 
+}
+
+
 
 
 
