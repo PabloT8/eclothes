@@ -215,6 +215,10 @@ router.get("/misCompras", async function(req, res, next) {
  });
 
 
+router.get("/manualUsuario",function (req, res, next) {
+  res.render("manual");
+}); 
+
 router.use("/", noLogeado, function (req, res, next) {
   next();
 });
