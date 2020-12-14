@@ -55,8 +55,12 @@
             <a href="/" class="dropdown-item">
               Ver productos
             </a>
-
-          </div>
+          <div class="dropdown-divider"></div>
+              <a href="/productos-usuario" class="dropdown-item">
+                Eliminar productos
+              </a>
+            </div>
+         
         </li>
 
         {{/if}}
@@ -174,7 +178,8 @@
   <script src="/js/jasny-bootstrap.min.js"></script>
   {{!-- Bootstrap tag input --}}
   <script src="/js/bootstrap-tagsinput.js"></script>
-
+  {{!-- Webpack bundle --}}
+  <script src="/dist/bundle.js"></script>
 </body>
 
 </html>
