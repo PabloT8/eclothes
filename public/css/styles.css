@@ -178,10 +178,79 @@
 .comprasBtn button{
 background-color:black;
 color: white;
-
+margin-top: -65px;
 margin-left: 600px;
 
 }
+
+
+.misCompras{
+	margin-left: 30px ;
+	background-color:white;
+	color: black;
+	font-weight: bold;
+	font-size: 15px;
+	font-family: Arial, Helvetica, sans-serif;
+	
+	border: solid 1px rgb(0, 0, 0);
+
+	border-top-width: 10px;
+	border-right-width: 1em;
+	border-bottom-width: thick;
+	border-left-width: thin;
+
+}
+
+
+.hero__content,
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero {
+  background-color: #ffffff88;
+}
+
+.hero__content {
+  width: 100%;
+  padding: 1.5rem;
+  color: #000000;
+  z-index: 1;
+}
+@media (min-width: 600px) {
+  .hero__content {
+    padding: 6vmin;
+  }
+}
+
+.hero__heading {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+@media (min-width: 600px) {
+  .hero__heading {
+    font-size: 3rem;
+  }
+}
+
+.hero__subheading {
+  margin: 1rem 0 0;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+}
+@media (min-width: 600px) {
+  .hero__subheading {
+    font-size: 1.5rem;
+  }
+}
+.hero__subheading,
+.hero__subheading a {
+  color: #4b5165;
+}
+
+
 
 .form-register .botons {
   width: 100%;
@@ -192,6 +261,14 @@ margin-left: 600px;
   margin: 16px 0;
   font-size: 16px;
 }
+
+
+
+
+
+
+
+
 
 .navbar{
 background-color:rgb(255, 255, 255);
@@ -226,11 +303,16 @@ font-size: 45px;
   widows: 150px; 
   height:50px;
 font-size: 20px;
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -272,7 +354,7 @@ font-size: 20px;
 
 body, html {
 	height: 100%;
-	background-color: rgb(255, 255, 255);
+	background-color:#89e7e391;
 	font-family: SourceSansPro-Regular, sans-serif;
 }
 

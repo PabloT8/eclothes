@@ -215,6 +215,27 @@ router.get("/misCompras", async function(req, res, next) {
  });
 
 
+ router.get("/ventas", async function(req, res, next) {
+
+  
+  email= req.user.email;
+  
+  
+  const ordenes = await Orden.find().lean();
+
+
+  
+
+  res.render("ventas",{ordenes,email});
+ });
+
+
+
+
+
+
+
+
 router.get("/manualUsuario",function (req, res, next) {
   res.render("manual");
 }); 

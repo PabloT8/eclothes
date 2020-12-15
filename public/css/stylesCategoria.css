@@ -314,7 +314,7 @@ a:hover {
 
 .nav__bar {
   position: fixed;
-  top: 200px;
+  top: 0px;
   bottom: 0;
   left: 0;
   width: 60px;
@@ -383,7 +383,8 @@ a:hover {
 
 
 .navbar{
-  background-color:rgb(255, 255, 255);
+  background-color:#89e7e391
+  ;
   font-family: Georgia, 'Times New Roman', Times, serif;
   
   }

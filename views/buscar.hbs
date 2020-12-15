@@ -1,3 +1,8 @@
+
+
+  
+
+
 <link href="/css/stylesCategoria.css" rel="stylesheet">
 
 
@@ -8,7 +13,8 @@
   </a>
 </div>
 
-<main class="main">
+<main class="main"   style="background-image: url(https://wallpaperaccess.com/full/729337.png
+); background-size: cover;">
   <br>
   <br>
   <br>
@@ -28,10 +34,34 @@
   <br>
 
   <form action="/productos/buscar/" class="search-form" role="search">
+
+  {{#if productos}}
     <div class="field" id="searchform">
       <input type="text" id="searchterm" name="nombre" placeholder="¿Qué estás buscando?" />
       <button type="submit" id="search">Buscar!</button>
     </div>
+{{else}}
+<div class="field" id="searchform">
+      <input type="text" id="searchterm" name="nombre" placeholder="¿Qué estás buscando?" />
+      <button type="submit" id="search">Buscar!</button>
+    </div>
+
+    <div class="caja" >
+
+    <img src="https://static.zara.net/static//common/images/empty-basket/empty-basket.jpg" alt="Imagen del producto"
+        style="width: 800px;
+	height: 490px;">
+
+    <div class="texto1">
+        <h2 class="textoh" style="margin-left: -90px;">—No se han encontrado resultados—</h2>
+
+
+    </div>
+
+</div>
+
+
+  {{/if}}
   </form>
 
 
@@ -98,6 +128,8 @@
     <li class="hola"><a href="/traje">Trajes</a></li>
   </ul>
 </nav>
+
+
 
 
 <script src="/js/categorias.js"></script>
