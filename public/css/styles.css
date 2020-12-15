@@ -271,17 +271,11 @@ margin-left: 600px;
 
 
 .navbar{
-background-color:rgb(255, 255, 255);
+background-color:#89e7e391;
 font-family: Georgia, 'Times New Roman', Times, serif;
 
 }
 
-.navbar-brand{
-  width:100px; 
-  height:70px;
-font-size: 48px;
-padding-left: 100px;
-}
 
 .btnEclothes{
 	
@@ -354,7 +348,7 @@ font-size: 20px;
 
 body, html {
 	height: 100%;
-	background-color:#89e7e391;
+	background-color: white;
 	font-family: SourceSansPro-Regular, sans-serif;
 }
 
@@ -363,7 +357,7 @@ a {
 	font-family: SourceSansPro-Regular;
 	font-size: 14px;
 	line-height: 1.7;
-	color: #666666;
+	color: white;
 	margin: 0px;
 	transition: all 0.4s;
 	-webkit-transition: all 0.4s;

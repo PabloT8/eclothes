@@ -14,7 +14,6 @@ exports.autenticarUsuario = passport.authenticate("local", {
   badRequestMessage: ["Debes ingresar tus credenciales"],
 });
 
-
 // Cerrar la sesión del usuario
 exports.cerrarSesion = (req, res, next) => {
   const messages = [];
@@ -214,13 +213,9 @@ exports.almacenarNuevaPassword = async (req, res, next) => {
 
 // Verifica que el usuario se encuentre autenticado
 exports.verificarInicioSesion = (req, res, next) => {
-  
   // Si el usuario se encuentra autenticado que siga con el siguiente middleware
   if (req.isAuthenticated()) return next();
 
   // Si no se auntenticó, redireccionar al inicio de sesión
   res.redirect("/iniciar-sesion");
 };
-
-
-

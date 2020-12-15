@@ -371,47 +371,14 @@ a:hover {
           transform: translateX(0) rotate(-90deg);
 }
 
-.nav {
-  position: absolute;
-  top: 200px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color:white;
-  z-index: 0;
-}
-
-
-.navbar{
-  background-color:#89e7e391
-  ;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  
-  }
-
-.navbar-brand{
-  width:100px; 
-  height:70px;
-font-size: 48px;
-padding-left: 100px;
-
-}
-
-.nav-item{
-  padding-right: 10px;
-  color: black;
-}
-
-
-.nav-link{
-  widows: 150px; 
-  height:50px;
-font-size: 20px;
 
 
 
 
-}
+
+
+
+
 
 .nav__list {
   overflow: hidden;
@@ -544,7 +511,7 @@ font-size: 20px;
 
 :root{
   
-  --color1:#f39b12;
+  --color1:#e30052;
 }
 
 .cuadroProducto{
