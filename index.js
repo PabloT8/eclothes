@@ -66,5 +66,11 @@ app.use(function(req, res, next) {
 
 // Implementar nuestro router
 app.use("/", router());
+const host="0.0.0.0";
+const port= process.env.PORT;
 
-app.listen(process.env.PORT);
+app.listen(port,host,()=>{
+  console.log(`servidor ejecutandose en el puerto ${port} `
+
+  );
+});
