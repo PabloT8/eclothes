@@ -1,22 +1,55 @@
 {{!-- Formulario de Inicio de Sesion --}}
 
-<div class="container text-center d-flex justify-content-center">
-    <form class="form-register" method="post" action="/iniciar-sesion" >
-    <h4>Iniciar sesion</h4>
-    <label for="email" class="sr-only">Correo electrónico </label>
-    <input class="controls" type="email" id="inputEmail" name="email"  placeholder="Email address" required="">
-    <label for="password" class="sr-only">Contraseña</label>
-    <input class="controls" type="password" id="inputPassword" name="password" placeholder="Password" required="">
-   
- 
-     <button class="botons" type="submit">Iniciar sesión</button>
-    <p><a href="/crear-cuenta">¿Si no tienes Cuenta? créala aquí</a></p>
-    <br>
-    <br>
-    <a href="/olvide-password">¿OLVIDASTE LA CONTRASEÑA?</a>
-  </form>
+
+<!--===============================================================================================-->
+
+
+<div class="container-login100"
+  style="background-image: url('https://www.milenio.com/uploads/media/2018/12/10/la-industria-de-la-moda.jpg');">
+
+
+
+
+  <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+
+    <div class="errores" id="errores">
+      {{>showMessages messages}}
+    </div>
+
+    <form class="login100-form validate-form" method="post" action="/iniciar-sesion">
+      <span class="login100-form-title p-b-37">
+        Iniciar sesión
+      </span>
+
+      <div class="wrap-input100 validate-input m-b-20" data-validate="Enter username or email">
+        <input class="input100" id="inputEmail" type="email" name="email" placeholder="Correo electrónico" required="">
+        <span class="focus-input100"></span>
+      </div>
+
+      <div class="wrap-input100 validate-input m-b-25" data-validate="Enter password">
+        <input class="input100" type="password" id="inputPassword" name="password" placeholder="Contraseña" required="">
+        <span class="focus-input100"></span>
+      </div>
+
+      <div class="container-login100-form-btn">
+        <button class="login100-form-btn" type="submit">
+          Iniciar sesión
+        </button>
+      </div>
+
+      <div class="text-center">
+        <br>
+        <a style="color: black;" href="/olvide-password">¿OLVIDASTE LA CONTRASEÑA?</a>
+        <br>
+        <br>
+        <a href="/crear-cuenta" class="txt2 hov1">
+          Regístrate
+        </a>
+      </div>
+
+    </form>
+
+  </div>
+
+
 </div>
-
-
-
-

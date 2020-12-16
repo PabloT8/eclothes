@@ -36,6 +36,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    //cookie: {maxAge: 180 * 60 * 1000  }
   })
 );
 
@@ -54,6 +55,14 @@ app.use((req, res, next) => {
 
 // Habilitar body-parser para obtener el cuerpo de la petición
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Midleware personalizado para cambiar estado de sesion
+
+app.use(function(req, res, next) {
+  res.locals.login = req.isAuthenticated();
+  res.locals.session = req.session;
+  next();
+});
 
 // Implementar nuestro router
 app.use("/", router());

@@ -1,59 +1,140 @@
-<br>
-<br>
-<br>
-<br>
-<div class="wrapper">
-  <div class="main">
-    <div class="section section-white section-search">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-12 ml-auto mr-auto text-center">
-            <form role="search" class="form-inline search-form">
-              <div class="input-group no-border">
-                <span class="input-group-addon addon-xtreme no-border" id="basic-addon1"><i
-                    class="fa fa-search"></i></span>
-                <input type="text" class="form-control input-xtreme no-border" placeholder="Buscar..."
-                  aria-describedby="basic-addon1">
+
+
+  
+
+
+<link href="/css/stylesCategoria.css" rel="stylesheet">
+<link href="/css/styles.css" rel="stylesheet">
+
+<!-- https://www.pinterest.com/pin/75576099974715878/ -->
+<div class="nav__bar">
+  <a href="#" class="nav__trigger">
+    <div class="bars"></div>
+  </a>
+</div>
+
+<main class="main"   style="background-image: url(https://wallpaperaccess.com/full/729337.png
+); background-size: cover;">
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div class="titulo">
+    <h1>e-clothes</h1>
+    <p align="center"></p>
+
+
+    <br>
+    <br>
+    <br>
+
+
+  </div>
+  <br>
+
+  <form action="/productos/buscar/" class="search-form" role="search">
+
+  {{#if productos}}
+    <div class="field" id="searchform">
+      <input type="text" id="searchterm" name="nombre" placeholder="¿Qué estás buscando?" />
+      <button type="submit" id="search">Buscar!</button>
+    </div>
+{{else}}
+<div class="field" id="searchform">
+      <input type="text" id="searchterm" name="nombre" placeholder="¿Qué estás buscando?" />
+      <button type="submit" id="search">Buscar!</button>
+    </div>
+
+    <div class="caja" >
+
+    <img src="https://static.zara.net/static//common/images/empty-basket/empty-basket.jpg" alt="Imagen del producto"
+        style="width: 800px;
+	height: 490px;">
+
+    <div class="texto1">
+        <h2 class="textoh" style="margin-left: -90px;">—No se han encontrado resultados—</h2>
+
+
+    </div>
+
+</div>
+
+
+  {{/if}}
+  </form>
+
+
+  {{!--<form class="search-form" role="search" action="/productos/busqueda/">
+    <div class="form-group md-form my-0 waves-light">
+      <input type="text" name="nombre" class="form-control" placeholder="Buscar">
+    </div>
+
+    --}}
+
+
+
+    <section class="content">
+
+
+      <div class="row add-row ">
+
+        {{#each productos as |producto|}}
+        <div class="col-md-4 col-sm-4">
+
+          <div class="cuadroProducto">
+
+
+
+            <a href="/producto/{{producto.url}}">
+              <div class="box box1">
+                <img src="../../uploads/products/{{pictures.[0]}}" alt="">
+                <span class="botton botton1">{{producto.nombre}}</span>
+
+                <p><strong>L. {{producto.precio}}.00</strong></p>
               </div>
-            </form>
-            <h6 class="text-muted">¿Es esto lo que búscas?</h6>
-            <div class="text-missing">
-              <h5 class="text-muted">¿Encontraste lo que buscabas? Prueba con otros términos para buscar</h5>
-            </div>
+             
+              
           </div>
+          </a>
+          
         </div>
+
+        {{/each}}
+
+
       </div>
-    </div>
-  </div>
-</div> 
 
-<div class="container">
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-60" src="https://www.baring.com.ar/resources/original/tienda-de-ropa-ley-de-talles-rosario.jpg" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-60" src="https://www.esciupfnews.com/wp-content/uploads/2020/02/ropa.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-60" src="https://media.theobjective.com/2019/11/que-hacer-con-la-gran-cantidad-de-ropa-que-compramos-pero-no-usamos.jpg" alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
 
-</div>
 
+
+
+
+
+    </section>
+</main>
+
+
+
+<nav class="nav">
+
+
+  <ul class="nav__list">
+    <li class="hola"><a href="/calzoneta">Calzonetas</a></li>
+    <li class="hola"><a href="/pantalon">Pantalones</a></li>
+    <li class="hola"><a href="/zapato">Zapatos</a></li>
+    <li class="hola"><a href="/camisa">Camisas</a></li>
+    <li class="hola"><a href="/abrigos">Abrigos</a></li>
+    <li class="hola"><a href="/traje">Trajes</a></li>
+  </ul>
+</nav>
+
+
+
+
+<script src="/js/categorias.js"></script>
+
+
+
+
+<script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>

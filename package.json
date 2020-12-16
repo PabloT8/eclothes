@@ -1,15 +1,18 @@
 {
-  "name": "nowelectronics",
+  "name": "eclothes",
   "version": "1.0.0",
-  "description": "Tienda en linea de productos electronicos",
+  "description": "Tienda de ropa en linea",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./index.js"
+    "dev": "nodemon ./index.js",
+    "watch": "webpack --watch --mode development",
+    "start": "concurrently \"npm run dev\" \"npm run watch\"",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wilhenc36/Now-Electronics.git"
+    "url": "git+https://github.com/PabloT8/eclothes.git"
   },
   "keywords": [
     "node",
@@ -18,17 +21,20 @@
     "bootstrap",
     "MVC"
   ],
-  "author": "José Escoto, Wilhen Cruz, Jassiel Aldana, Hertdert Ortega, David Torres",
+  "author": "Pablo Tabares, Luis Escobar, Jose Leiva, Kevin Zamora, Ernesto Carcamo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wilhenc36/Now-Electronics/issues"
+    "url": "https://github.com/PabloT8/eclothes/issues"
   },
-  "homepage": "https://github.com/wilhenc36/Now-Electronics#readme",
+  "homepage": "https://github.com/PabloT8/eclothes#readme",
   "dependencies": {
+    "axios": "^0.21.0",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.5",
+    "csrf": "^3.1.0",
+    "csurf": "^1.11.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
@@ -41,9 +47,16 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "shortid": "^2.2.16",
-    "slug": "^4.0.2"
+    "slug": "^4.0.2",
+    "sweetalert2": "^10.12.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6",
+    "webpack": "^5.10.0",
+    "webpack-cli": "^4.2.0"
   }
 }

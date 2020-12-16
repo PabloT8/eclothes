@@ -1,53 +1,59 @@
-//Importar modulos requeridos
+// Importar los módulos requeridos
 const mongoose = require("mongoose");
 const shortid = require("shortid");
-//Definicion del schema
-const productoSchema = new mongoose.Schema({
-    nombre: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    descripcion: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    imagen: String,
-    precio: {
-        type: Number,
-        required: true,
-    },
-    fechaCreacion: Date,
-    url: {
-        type: String,
-        lowercase: true,
-    },
-    etiquetas: String,
-    vendedor: {
-        type: mongoose.Schema.ObjectId,
-        ref: "Usuario",
-        required: true
-    },
-    comprador: {
-        type: mongoose.Schema.ObjectId,
-        ref: "Usuario",
-    },
-    fechaVenta: Date,
-    estado: String,
-    publicar: Boolean,
-})
-//Hooks para generar URL del producto
-productoSchema.pre("save", function(next){
-    //Crear URL
-    const url = slug(this.nombre);
-    this.url = `${url}-${shortid.generate()}`;
+const slug = require("slug");
 
-    // Almacenar la fecha de creación del producto
+// Definición del schema
+const productoSchema = new mongoose.Schema({
+  nombre: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  descripcion: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  pictures:  [{type: String}],
+  precio: {
+    type: Number,
+    required: true,
+  },
+  fechaCreacion: Date,
+
+  url: {
+    type: String,
+    lowercase: true,
+  },
+  categoria: {type: String,
+    required: true},
+  vendedor: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Usuarios",
+    required: true,
+  },
+  comprador: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Usuarios",
+  },
+  fechaVenta: Date,
+  talla: String,
+  publicar: Boolean,
+});
+// Hooks para generar la URL del producto
+productoSchema.pre("save", function (next) {
+  // Crear la URL
+  const url = slug(this.nombre);
+  this.url = `${url}-${shortid.generate()}`;
+
+  // Almacenar la fecha de creación del producto
   this.fechaCreacion = Date.now();
 
-    next();
-})
-//Generar un indice para mejorar la busqueda por el nombre del producto
+  next();
+});
+
+// Generar un índice para mejorar la búsqueda por el nombre del producto
 productoSchema.index({ nombre: "text" });
+
 module.exports = mongoose.model("Producto", productoSchema);
